@@ -1,0 +1,10 @@
+.buttonMenu {
+  background-color: #1d8546;
+  color: white;
+  padding: 7%;
+  border-radius: 50%;
+  max-width: 18%;
+  min-width: 40px;
+  border: solid 1px black;
+  font-size: 1rem;
+}
