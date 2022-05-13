@@ -2,3 +2,9 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+.nav a:hover,
+.nav a:active,
+.nav a.active {
+  background-color: green;
+}

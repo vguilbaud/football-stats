@@ -1,5 +1,5 @@
 import { fakeLeague } from "../dummyInfos";
-import LeagueCard from "../components/Cards/LeagueCard";
+import LeagueCard from "../components/cards/LeagueCard";
 
 const Leagues = (props) => {
   return (

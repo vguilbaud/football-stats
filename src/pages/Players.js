@@ -1,5 +1,5 @@
 import { fakePlayers } from "../dummyInfos";
-import PlayerCard from "../components/Cards/PlayerCard";
+import PlayerCard from "../components/cards/PlayerCard";
 
 const Players = (props) => {
   return (

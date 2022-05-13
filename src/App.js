@@ -16,7 +16,7 @@ function App() {
     <Layout className="centered">
       <Switch>
         <Route path="/" exact>
-          <Redirect to="/teams" />
+          <Redirect to="/leagues" />
         </Route>
         <Route path="/teams" exact>
           <Teams />

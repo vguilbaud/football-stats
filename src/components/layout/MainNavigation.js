@@ -1,13 +1,21 @@
-import ButtonMenu from "./ButtonMenu";
 import classes from "./MainNavigation.module.css";
+import { NavLink } from "react-router-dom";
 
 const MainNavigation = () => {
-  const menuOption = ["teams", "leagues", "players"];
+  const menuOption = ["leagues", "players", "teams"];
 
   return (
     <ul className={`centered ${classes.nav}`}>
       {menuOption.map((option) => {
-        return <ButtonMenu key={option} title={option} />;
+        return (
+          <NavLink
+            to={`/${option}`}
+            key={option}
+            activeClassName={classes.active}
+          >
+            {option}
+          </NavLink>
+        );
       })}
     </ul>
   );
