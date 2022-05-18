@@ -1,11 +1,11 @@
-import { fakeTeams } from "../dummyInfos";
-import TeamCard from "../components/cards/TeamCard";
+import { leagues } from "../hardcode";
+import LeagueCard from "../components/cards/LeagueCard";
 
 const Teams = (props) => {
   return (
     <div className="centered">
-      {fakeTeams.map((team) => {
-        return <TeamCard team={team} key={Math.random()} />;
+      {leagues.map((league) => {
+        return <LeagueCard league={league} key={league.id} />;
       })}
     </div>
   );

@@ -2,7 +2,7 @@ import classes from "./MainNavigation.module.css";
 import { NavLink } from "react-router-dom";
 
 const MainNavigation = () => {
-  const menuOption = ["leagues", "players", "teams"];
+  const menuOption = ["teams", "players"];
 
   return (
     <ul className={`centered ${classes.nav}`}>
