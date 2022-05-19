@@ -35,7 +35,17 @@ function App() {
   //   .then((res) => {
   //     console.log(res);
   //   });
-  fetch("http://localhost:4200/api/leagues")
+  // fetch("http://localhost:4200/api/leagues/39?season=2021")
+  //   .then((res) => {
+  //     return res.json();
+  //   })
+  //   .then((res) => console.log(res));
+  // fetch("http://localhost:4200/api/leagues?search=premie")
+  //   .then((res) => {
+  //     return res.json();
+  //   })
+  //   .then((res) => console.log(res));
+  fetch("http://localhost:4200/api/teams/33/statistics?season=2021")
     .then((res) => {
       return res.json();
     })
