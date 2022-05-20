@@ -90,13 +90,50 @@ function App() {
   //   })
   //   .then((res) => console.log(res));
 
-  fetch("http://localhost:4200/api/coach?team=33")
-    .then((res) => {
-      return res.json();
-    })
-    .then((response) => {
-      console.log(response);
-    });
+  // fetch("http://localhost:4200/api/coach?team=33")
+  //   .then((res) => {
+  //     return res.json();
+  //   })
+  //   .then((response) => {
+  //     console.log(response);
+  //   });
+
+  // const getAllplayers = async () => {
+  //   let page = 1;
+  //   let totalPages = 1;
+
+  //   let allPlayers = await fetch(
+  //     `http://localhost:4200/api/players?team=33&season=2021&page=${page}`
+  //   )
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((response) => {
+  //       totalPages = response.totalPages;
+  //       return response.players;
+  //     })
+  //     .then(async (response) => {
+  //       let players = [];
+  //       players.push(...response);
+  //       for (let i = page + 1; i < totalPages + 1; i++) {
+  //         await fetch(
+  //           `http://localhost:4200/api/players?team=33&season=2021&page=${i}`
+  //         )
+  //           .then((res) => {
+  //             return res.json();
+  //           })
+  //           .then((resp) => {
+  //             players.push(...resp.players);
+  //             return;
+  //           });
+  //       }
+  //       return Promise.all(players);
+  //     })
+  //     .then((res) => {
+  //       return res;
+  //     });
+  //   return allPlayers;
+  // };
 
   return (
     <Layout className="centered">
