@@ -132,8 +132,23 @@ function App() {
   //     .then((res) => {
   //       return res;
   //     });
+  //   console.log(allPlayers);
   //   return allPlayers;
   // };
+
+  // getAllplayers();
+
+  // fetch("http://localhost:4200/api/players/874?season=2021")
+  //   .then((res) => {
+  //     return res.json();
+  //   })
+  //   .then((res) => console.log(res));
+
+  fetch("http://localhost:4200/api/players/teamPlayed/874")
+    .then((res) => {
+      return res.json();
+    })
+    .then((res) => console.log(res));
 
   return (
     <Layout className="centered">
