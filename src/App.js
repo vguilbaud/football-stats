@@ -1,7 +1,9 @@
 import { Route, Switch, Redirect } from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import Players from "./pages/Players";
-import Teams from "./pages/Teams";
+import Home from "./pages/Home";
+import TeamDetails from "./pages/TeamDetails/TeamDetails";
+import PlayerDetails from "./pages/PlayerDetails";
+import TeamsList from "./components/lists/TeamsList";
 
 function App() {
   // fetch("http://localhost:4200/api/creds")
@@ -144,24 +146,33 @@ function App() {
   //   })
   //   .then((res) => console.log(res));
 
-  fetch("http://localhost:4200/api/players/teamPlayed/874")
-    .then((res) => {
-      return res.json();
-    })
-    .then((res) => console.log(res));
+  // fetch("http://localhost:4200/api/players/teamPlayed/874")
+  //   .then((res) => {
+  //     return res.json();
+  //   })
+  //   .then((res) => console.log(res));
 
   return (
     <Layout className="centered">
       <Switch>
         <Route path="/" exact>
-          <Redirect to="/teams" />
+          <Redirect to="/home" />
         </Route>
-        <Route path="/teams" exact>
-          <Teams />
+        <Route path="/home">
+          <Home />
         </Route>
-        <Route path="/players">
+        <Route path="/league/:leagueId">
+          <TeamsList />
+        </Route>
+        <Route path="/team/:teamId">
+          <TeamDetails />
+        </Route>
+        <Route path="/player/:playerId">
+          <PlayerDetails />
+        </Route>
+        {/* <Route path="/players">
           <Players />
-        </Route>
+        </Route> */}
       </Switch>
     </Layout>
   );
