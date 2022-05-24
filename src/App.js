@@ -114,23 +114,23 @@ function App() {
   //       totalPages = response.totalPages;
   //       return response.players;
   //     })
-  //     .then(async (response) => {
-  //       let players = [];
-  //       players.push(...response);
-  //       for (let i = page + 1; i < totalPages + 1; i++) {
-  //         await fetch(
-  //           `http://localhost:4200/api/players?team=33&season=2021&page=${i}`
-  //         )
-  //           .then((res) => {
-  //             return res.json();
-  //           })
-  //           .then((resp) => {
-  //             players.push(...resp.players);
-  //             return;
-  //           });
-  //       }
-  //       return Promise.all(players);
-  //     })
+  // .then(async (response) => {
+  //   let players = [];
+  //   players.push(...response);
+  //   for (let i = page + 1; i < totalPages + 1; i++) {
+  //     await fetch(
+  //       `http://localhost:4200/api/players?team=33&season=2021&page=${i}`
+  //     )
+  //       .then((res) => {
+  //         return res.json();
+  //       })
+  //       .then((resp) => {
+  //         players.push(...resp.players);
+  //         return;
+  //       });
+  //   }
+  //   return Promise.all(players);
+  // })
   //     .then((res) => {
   //       return res;
   //     });

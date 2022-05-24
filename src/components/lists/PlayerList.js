@@ -5,65 +5,32 @@ const PlayerList = (props) => {
   const [playerList, addPlayerList] = useState([]);
 
   useEffect(() => {
-    const getAllplayers = async () => {
-      let page = 1;
-      let totalPages = 1;
-
-      let allPlayers = await fetch(
-        `http://localhost:4200/api/players?team=${props.teamId}&season=${props.season}&page=${page}`
+    let getAlldaPlayers = async () => {
+      return await fetch(
+        `http://localhost:4200/api/players/get?team=${props.teamId}&season=${props.season}`
       )
         .then((res) => {
           return res.json();
         })
-        .then((response) => {
-          totalPages = response.totalPages;
-          return response.players;
-        })
-        .then(async (response) => {
-          let players = [];
-          players.push(...response);
-          for (let i = page + 1; i < totalPages + 1; i++) {
-            await fetch(
-              `http://localhost:4200/api/players?team=${props.teamId}&season=${props.season}&page=${i}`
-            )
-              .then((res) => {
-                return res.json();
+        .then((allPlayers) => {
+          addPlayerList(
+            allPlayers
+              .sort((a, b) => b.goals - a.goals)
+              .map((player) => {
+                if (player) {
+                  return (
+                    <PlayerListItem
+                      key={`player${player.id}`}
+                      player={player}
+                    />
+                  );
+                } else return "";
               })
-              .then((resp) => {
-                players.push(...resp.players);
-                return;
-              });
-          }
-          return Promise.all(
-            players.map((player, i, arr) => {
-              let duplicate = arr.find(
-                (pl, ind) => pl.id === player.id && ind !== i
-              );
-              if (duplicate) {
-                player.games += duplicate.games;
-                player.goals += duplicate.goals;
-                player.assists += duplicate.assists;
-                player.yellows += duplicate.yellows;
-                player.reds += duplicate.reds;
-                arr.splice([arr.indexOf(duplicate)], 1);
-              }
-              return player;
-            })
           );
         });
-      addPlayerList(
-        allPlayers.map((player) => {
-          if (player) {
-            return (
-              <PlayerListItem key={`player${player.id}`} player={player} />
-            );
-          }
-        })
-      );
     };
-
-    getAllplayers();
-  }, [props]);
+    getAlldaPlayers();
+  }, [props.teamId, props.season]);
 
   return (
     <div className="centered">
