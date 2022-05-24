@@ -16,7 +16,13 @@ code {
   text-align: center;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   flex-wrap: wrap;
-  align-items: center;
   padding: 0;
+}
+
+.statsBoard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

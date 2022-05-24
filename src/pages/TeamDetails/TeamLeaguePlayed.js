@@ -2,7 +2,7 @@ import classes from "./TeamLeaguePlayed.module.css";
 
 const TeamLeaguePlayed = (props) => {
   return (
-    <div className="centered">
+    <div>
       {props.leagues.map((league) => {
         return (
           <div
