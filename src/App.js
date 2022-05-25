@@ -2,7 +2,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import TeamDetails from "./pages/TeamDetails/TeamDetails";
-import PlayerDetails from "./pages/PlayerDetails";
+import PlayerDetails from "./pages/PlayerDetails/PlayerDetails";
 import TeamsList from "./components/lists/TeamsList";
 
 function App() {
