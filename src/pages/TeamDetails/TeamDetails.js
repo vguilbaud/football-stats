@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { seasons } from "../../hardcode";
 import TeamStats from "./TeamStats";
@@ -89,12 +89,13 @@ const TeamCard = (props) => {
 
   return (
     <div className="centered">
+      <NavLink to={`/home`}>Back</NavLink>
       <form onChange={changeSeason}>
         <select>
           {seasons.map((season) => {
             return (
               <option
-                key={`team${season.trim()}`}
+                key={`team${season.replace(" ", "")}`}
                 value={season.substring(0, 4)}
               >
                 {season}

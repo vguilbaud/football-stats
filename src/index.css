@@ -25,4 +25,16 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+}
+
+.statsBoard > p {
+  width: 10%;
+  height: 12px;
+}
+
+.statsBoard > h4 {
+  width: 16%;
+  margin-right: 5px;
+  height: 12px;
 }

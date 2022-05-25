@@ -1,0 +1,12 @@
+.teamBoard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.teamBoard > div {
+  width: 30px;
+}
+
+.teamBoard > div > img {
+  width: 60px;
+}

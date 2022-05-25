@@ -27,7 +27,7 @@ const TeamsList = (props) => {
           {seasons.map((season) => {
             return (
               <option
-                key={`league${season.trim()}`}
+                key={`league${season.replace(" ", "")}`}
                 value={season.substring(0, 4)}
               >
                 {season}
