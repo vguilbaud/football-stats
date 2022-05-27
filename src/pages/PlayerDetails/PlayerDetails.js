@@ -14,16 +14,15 @@ const PlayerDetails = (props) => {
   const playerId = location.pathname.replace(/[^0-9]/g, "");
 
   useEffect(() => {
-    fetch(`http://localhost:4200/api/players/${playerId}?season=2021`).then(
-      (res) =>
-        res.json().then((res) => {
-          changeInfoPlayerContent(
-            <PlayerInfo infos={res.playerInfos} total={res.total} />
-          );
-          changeInfoStatsContent(
-            <PlayerStats playerId={playerId} stats={res.stats} />
-          );
-        })
+    fetch(`http://localhost:4200/api/players/${playerId}`).then((res) =>
+      res.json().then((res) => {
+        changeInfoPlayerContent(
+          <PlayerInfo infos={res.playerInfos} total={res.total} />
+        );
+        changeInfoStatsContent(
+          <PlayerStats playerId={playerId} stats={res.stats} />
+        );
+      })
     );
     fetch(`http://localhost:4200/api/players/teamPlayed/${playerId}`)
       .then((res) => {

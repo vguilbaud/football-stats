@@ -24,7 +24,7 @@ const LeaguesList = (props) => {
       <form onChange={searchLeague}>
         <input
           type="text"
-          placeholder="Searc for a league, min 2 letters"
+          placeholder="Search for a league, min 2 letters"
           min="3"
         ></input>
       </form>

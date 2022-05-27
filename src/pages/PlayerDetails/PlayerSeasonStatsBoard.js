@@ -1,4 +1,5 @@
 import PlayerSeasonLeagueStatsBoard from "./PlayerSeasonLeagueStatsBoard";
+import { NavLink } from "react-router-dom";
 
 const PlayerSeasonStatsBoard = (props) => {
   const formatDate = (year) => `${year} - ${(parseInt(year) + 1).toString()}`;
@@ -15,22 +16,44 @@ const PlayerSeasonStatsBoard = (props) => {
       </div>
       <div>
         {props.season.statsLeague.map((league) => {
-          return (
-            <PlayerSeasonLeagueStatsBoard
-              key={`${props.playerId}${props.season.year}${
-                league.id
-                  ? league.league.id
-                  : league.league.name.replace(" ", "")
-              }`}
-              name={league.league.name}
-              goals={league.statistics.goals}
-              appearences={league.statistics.appearences}
-              assists={league.statistics.assists}
-              yellows={league.statistics.yellows}
-              reds={league.statistics.reds}
-              assistPresent={props.season.totalYear.assists ? true : false}
-            />
-          );
+          if (league.league.id) {
+            return (
+              <NavLink
+                to={`/league/${league.league.id}`}
+                key={`${props.playerId}${props.season.year}${
+                  league.id
+                    ? league.league.id
+                    : league.league.name.replace(" ", "")
+                }`}
+              >
+                <PlayerSeasonLeagueStatsBoard
+                  name={league.league.name}
+                  goals={league.statistics.goals}
+                  appearences={league.statistics.appearences}
+                  assists={league.statistics.assists}
+                  yellows={league.statistics.yellows}
+                  reds={league.statistics.reds}
+                  assistPresent={props.season.totalYear.assists ? true : false}
+                />
+              </NavLink>
+            );
+          } else
+            return (
+              <PlayerSeasonLeagueStatsBoard
+                key={`${props.playerId}${props.season.year}${
+                  league.id
+                    ? league.league.id
+                    : league.league.name.replace(" ", "")
+                }`}
+                name={league.league.name}
+                goals={league.statistics.goals}
+                appearences={league.statistics.appearences}
+                assists={league.statistics.assists}
+                yellows={league.statistics.yellows}
+                reds={league.statistics.reds}
+                assistPresent={props.season.totalYear.assists ? true : false}
+              />
+            );
         })}
       </div>
       <PlayerSeasonLeagueStatsBoard

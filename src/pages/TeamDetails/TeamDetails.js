@@ -1,6 +1,5 @@
 import { useLocation, NavLink } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import { seasons } from "../../hardcode";
 import TeamStats from "./TeamStats";
 import TeamInfos from "./TeamInfos";
 import TeamLeaguePlayed from "./TeamLeaguePlayed";
@@ -12,12 +11,23 @@ const TeamCard = (props) => {
   const [teamLeaguePlayedContent, changeTeamLeaguePlayendContent] = useState(
     []
   );
+  const [possibleSeasons, changePossibleSeason] = useState([]);
   const totalGoals = useRef({});
   const teamId = location.pathname.replace(/[^0-9]/g, "");
   const leaguePlayed = useRef([]);
   const [teamStatsContent, changeTeamStatsContent] = useState([]);
   const [teamInfosContent, changeTeamInfoContent] = useState([]);
   const [teamPlayerList, changeTeamPlayerList] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:4200/api/teams/possibleSeasons/${teamId}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        changePossibleSeason(res);
+        changeSeasonHandler(res[0]);
+      });
+  }, [teamId]);
 
   useEffect(() => {
     fetch(`http://localhost:4200/api/teams/${teamId}`)
@@ -90,20 +100,33 @@ const TeamCard = (props) => {
   return (
     <div className="centered">
       <NavLink to={`/home`}>Back</NavLink>
-      <form onChange={changeSeason}>
-        <select>
-          {seasons.map((season) => {
-            return (
-              <option
-                key={`team${season.replace(" ", "")}`}
-                value={season.substring(0, 4)}
-              >
-                {season}
-              </option>
-            );
-          })}
-        </select>
-      </form>
+      {possibleSeasons.length > 0 && (
+        <form onChange={changeSeason}>
+          <select>
+            {possibleSeasons.map((season) => {
+              if (season === seasonChosen) {
+                return (
+                  <option
+                    key={`team${season.replace(" ", "")}`}
+                    value={season.substring(0, 4)}
+                    defaultValue
+                  >
+                    {season}
+                  </option>
+                );
+              } else
+                return (
+                  <option
+                    key={`team${season.replace(" ", "")}`}
+                    value={season.substring(0, 4)}
+                  >
+                    {season}
+                  </option>
+                );
+            })}
+          </select>
+        </form>
+      )}
       <div>
         {teamInfosContent}
         {teamStatsContent}
