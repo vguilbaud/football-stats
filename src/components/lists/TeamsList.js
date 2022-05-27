@@ -7,8 +7,7 @@ const TeamsList = (props) => {
   const location = useLocation();
   const history = useHistory();
   let params = new URLSearchParams(location.search);
-  let URLseason = params.get("season") ? params.get("season") : "2021";
-  console.log("whole");
+  let URLseason = params.get("season");
 
   const [seasonChosen, changeSeasonHandler] = useState(URLseason);
   const [possibleSeasons, changePossibleSeason] = useState([]);
@@ -23,33 +22,35 @@ const TeamsList = (props) => {
       .then((res) => res.json())
       .then((response) => {
         changePossibleSeason(response);
-        console.log("seasons");
       });
   }, [leagueId]);
 
   useEffect(() => {
-    setTimeout(() => {
-      fetch(
-        `http://localhost:4200/api/leagues/${leagueId}?season=${
-          URLseason ? URLseason : seasonChosen
-        }`
-      )
-        .then((res) => {
-          return res.json();
-        })
-        .then((res) => {
-          changeTeamsDisplayed(res);
-          console.log("everything");
-        });
-    }, 500);
-  }, [leagueId, URLseason, possibleSeasons, seasonChosen]);
+    if (possibleSeasons.length > 0) {
+      setTimeout(() => {
+        fetch(
+          `http://localhost:4200/api/leagues/${leagueId}?season=${
+            URLseason ? URLseason : possibleSeasons[0].substring(0, 4)
+          }`
+        )
+          .then((res) => {
+            return res.json();
+          })
+          .then((res) => {
+            changeTeamsDisplayed(res);
+          });
+      }, 500);
+    }
+  }, [leagueId, URLseason, seasonChosen, possibleSeasons]);
 
   const changeSeason = (input) => {
-    history.push({
-      pathname: location.pathname,
-      search: `?season=${input.target.value}`,
-    });
-    changeSeasonHandler(input.target.value);
+    setTimeout(() => {
+      history.push({
+        pathname: location.pathname,
+        search: `?season=${input.target.value}`,
+      });
+      changeSeasonHandler(input.target.value);
+    }, 1000);
   };
 
   return (
