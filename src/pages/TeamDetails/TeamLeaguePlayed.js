@@ -1,11 +1,13 @@
 import classes from "./TeamLeaguePlayed.module.css";
+import { NavLink } from "react-router-dom";
 
 const TeamLeaguePlayed = (props) => {
   return (
     <div>
       {props.leagues.map((league) => {
         return (
-          <div
+          <NavLink
+            to={`/league/${league.id}?season=${props.season}`}
             className={classes.leagueMiniInfo}
             key={`teamLeague${league.id}`}
           >
@@ -15,7 +17,7 @@ const TeamLeaguePlayed = (props) => {
               alt={`${league.name} logo`}
             />
             <p>{league.name}</p>
-          </div>
+          </NavLink>
         );
       })}
     </div>

@@ -20,7 +20,7 @@ const LeaguesList = (props) => {
   };
 
   return (
-    <div className="centered">
+    <div>
       <form onChange={searchLeague}>
         <input
           type="text"

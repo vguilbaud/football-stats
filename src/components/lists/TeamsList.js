@@ -58,26 +58,16 @@ const TeamsList = (props) => {
       <NavLink to={`/home`}>Back</NavLink>
       {possibleSeasons.length > 0 && (
         <form onChange={changeSeason}>
-          <select defaultValue={URLseason}>
+          <select defaultValue={URLseason ? URLseason : "2021"}>
             {possibleSeasons.map((season) => {
-              if (season === URLseason) {
-                return (
-                  <option
-                    key={`league${season.replace(" ", "")}`}
-                    value={season.substring(0, 4)}
-                  >
-                    {season}
-                  </option>
-                );
-              } else
-                return (
-                  <option
-                    key={`league${season.replace(" ", "")}`}
-                    value={season.substring(0, 4)}
-                  >
-                    {season}
-                  </option>
-                );
+              return (
+                <option
+                  key={`league${season.replace(" ", "")}`}
+                  value={season.substring(0, 4)}
+                >
+                  {season}
+                </option>
+              );
             })}
           </select>
         </form>
@@ -88,7 +78,7 @@ const TeamsList = (props) => {
             <TeamListItem
               team={team}
               key={`team${team.id}`}
-              season={seasonChosen}
+              season={URLseason ? URLseason : "2021"}
             />
           );
         })}
