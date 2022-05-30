@@ -32,7 +32,7 @@ const PlayerDetails = (props) => {
         setTeamId(res.transfers[0].teams.in.id);
         changeInfoTeamsContent(<PlayerTeams teams={res.transfers} />);
       });
-  }, [playerId, teamId]);
+  }, [playerId]);
 
   return (
     <div>

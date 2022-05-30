@@ -58,12 +58,26 @@ const TeamCard = (props) => {
       changeTeamPlayerList(
         <PlayerList
           teamId={teamId}
-          season={URLseason ? URLseason : possibleSeasons[0].substring(0, 4)}
+          season={
+            URLseason
+              ? URLseason
+              : possibleSeasons
+                  .map((season) => season.substring(0, 4))
+                  .includes("2021 ?")
+              ? "2021"
+              : possibleSeasons[0].substring(0, 4)
+          }
         />
       );
       fetch(
         `http://localhost:4200/api/leagues/getLeaguesFromTeam?team=${teamId}&season=${
-          URLseason ? URLseason : possibleSeasons[0].substring(0, 4)
+          URLseason
+            ? URLseason
+            : possibleSeasons
+                .map((season) => season.substring(0, 4))
+                .includes("2021 ?")
+            ? "2021"
+            : possibleSeasons[0].substring(0, 4)
         }`
       )
         .then((res) => {
@@ -75,7 +89,15 @@ const TeamCard = (props) => {
           changeTeamLeaguePlayendContent(
             <TeamLeaguePlayed
               leagues={leaguePlayed.current.value}
-              season={URLseason ? URLseason : "2021"}
+              season={
+                URLseason
+                  ? URLseason
+                  : possibleSeasons
+                      .map((season) => season.substring(0, 4))
+                      .includes("2021 ?")
+                  ? "2021"
+                  : possibleSeasons[0].substring(0, 4)
+              }
             />
           );
           let allGoals = await res.map(async (daLeague) => {
@@ -133,7 +155,17 @@ const TeamCard = (props) => {
       <NavLink to={`/home`}>Back</NavLink>
       {possibleSeasons.length > 0 && (
         <form onChange={changeSeason}>
-          <select defaultValue={URLseason ? URLseason : "2021"}>
+          <select
+            defaultValue={
+              URLseason
+                ? URLseason
+                : possibleSeasons
+                    .map((season) => season.substring(0, 4))
+                    .includes("2021 ?")
+                ? "2021"
+                : possibleSeasons[0].substring(0, 4)
+            }
+          >
             {possibleSeasons.map((season) => {
               if (season === seasonChosen) {
                 return (

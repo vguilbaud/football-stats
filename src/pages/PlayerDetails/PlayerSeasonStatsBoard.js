@@ -16,35 +16,20 @@ const PlayerSeasonStatsBoard = (props) => {
       </div>
       <div>
         {props.season.statsLeague.map((league) => {
-          if (league.league.id) {
-            return (
-              <NavLink
-                to={`/league/${league.league.id}`}
-                key={`${props.playerId}${props.season.year}${
-                  league.id
-                    ? league.league.id
-                    : league.league.name.replace(" ", "")
-                }`}
-              >
-                <PlayerSeasonLeagueStatsBoard
-                  name={league.league.name}
-                  goals={league.statistics.goals}
-                  appearences={league.statistics.appearences}
-                  assists={league.statistics.assists}
-                  yellows={league.statistics.yellows}
-                  reds={league.statistics.reds}
-                  assistPresent={props.season.totalYear.assists ? true : false}
-                />
-              </NavLink>
-            );
-          } else
-            return (
+          return (
+            <NavLink
+              to={
+                league.league.id
+                  ? `/league/${league.league.id}`
+                  : `/home/?search=${league.league.name.replace(" ", "%20")}`
+              }
+              key={`${props.playerId}${props.season.year}${
+                league.league.id
+                  ? league.league.id
+                  : league.league.name.replace(" ", "")
+              }`}
+            >
               <PlayerSeasonLeagueStatsBoard
-                key={`${props.playerId}${props.season.year}${
-                  league.id
-                    ? league.league.id
-                    : league.league.name.replace(" ", "")
-                }`}
                 name={league.league.name}
                 goals={league.statistics.goals}
                 appearences={league.statistics.appearences}
@@ -53,7 +38,8 @@ const PlayerSeasonStatsBoard = (props) => {
                 reds={league.statistics.reds}
                 assistPresent={props.season.totalYear.assists ? true : false}
               />
-            );
+            </NavLink>
+          );
         })}
       </div>
       <PlayerSeasonLeagueStatsBoard

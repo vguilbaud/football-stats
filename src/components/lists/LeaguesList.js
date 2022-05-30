@@ -1,22 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation, useHistory } from "react-router-dom";
 import { leagues } from "../../hardcode";
 import LeagueListItem from "./LeagueListItem";
 
 const LeaguesList = (props) => {
-  const [leaguesList, setLeaguesList] = useState(leagues);
+  const [leaguesList, setLeaguesList] = useState([]);
+  const location = useLocation();
+  const history = useHistory();
+  let params = new URLSearchParams(location.search);
+  let URLsearch = params.get("search");
+
+  useEffect(() => {
+    if (URLsearch?.length > 3) {
+      fetch(`http://localhost:4200/api/leagues?search=${URLsearch}`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          setLeaguesList(res);
+        });
+    } else if (!URLsearch) {
+      setLeaguesList(leagues);
+    }
+  }, [URLsearch]);
 
   const searchLeague = (search) => {
-    if (search.target.value.length > 2) {
+    search.preventDefault();
+    if (search.target.value.length > 3) {
       setTimeout(() => {
-        fetch(`http://localhost:4200/api/leagues?search=${search.target.value}`)
-          .then((res) => {
-            return res.json();
-          })
-          .then((res) => {
-            setLeaguesList(res);
-          });
-      }, 500);
-    } else setLeaguesList(leagues);
+        history.push({
+          pathname: location.pathname,
+          search: `?search=${search.target.value}`,
+        });
+      }, 300);
+    } else if (URLsearch) {
+      history.push({
+        pathname: location.pathname,
+        search: ``,
+      });
+    }
   };
 
   return (
@@ -24,8 +46,9 @@ const LeaguesList = (props) => {
       <form onChange={searchLeague}>
         <input
           type="text"
-          placeholder="Search for a league, min 2 letters"
-          min="3"
+          placeholder="Search for a league, min 4 characters"
+          min="4"
+          defaultValue={URLsearch ? URLsearch : ""}
         ></input>
       </form>
       <div className="centered">
