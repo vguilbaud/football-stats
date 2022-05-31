@@ -1,10 +1,10 @@
 import { Fragment } from "react";
-import Login from "./Login";
+import Authentication from "./Authentication";
 
 const Layout = (props) => {
   return (
     <Fragment>
-      <Login />
+      <Authentication />
       <main>{props.children}</main>
     </Fragment>
   );

@@ -1,6 +1,5 @@
 import ReactDom from "react-dom";
-import SignUp from "./SignUp";
-import Login from "./Login";
+import SignUpLogin from "./SignUpLogin";
 import classes from "./Connection.module.css";
 
 const BackDrop = (props) => {
@@ -8,7 +7,7 @@ const BackDrop = (props) => {
 };
 
 const ConnectionModal = (props) => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   return (
     <div>
@@ -18,12 +17,11 @@ const ConnectionModal = (props) => {
       )}
       {!isLoggedIn &&
         ReactDom.createPortal(
-          <SignUp removeModal={props.removeModal} />,
-          document.getElementById("overlay-root")
-        )}
-      {isLoggedIn &&
-        ReactDom.createPortal(
-          <Login removeModal={props.removeModal} />,
+          <SignUpLogin
+            switchSigning={props.switchSigning}
+            signing={props.signing}
+            removeModal={props.removeModal}
+          />,
           document.getElementById("overlay-root")
         )}
     </div>
