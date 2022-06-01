@@ -4,8 +4,13 @@ import Home from "./pages/Home";
 import TeamDetails from "./pages/TeamDetails/TeamDetails";
 import PlayerDetails from "./pages/PlayerDetails/PlayerDetails";
 import TeamsList from "./components/lists/TeamsList";
+import { useContext } from "react";
+import AuthContext from "./store/auth-context";
 
 function App() {
+  const authCtx = useContext(AuthContext);
+  console.log(authCtx);
+
   return (
     <Layout className="centered">
       <Switch>

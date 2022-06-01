@@ -29,8 +29,12 @@ const PlayerDetails = (props) => {
         return res.json();
       })
       .then((res) => {
-        setTeamId(res.transfers[0].teams.in.id);
-        changeInfoTeamsContent(<PlayerTeams teams={res.transfers} />);
+        if (res.length > 0) {
+          setTeamId(res.transfers[0].teams.in.id);
+          changeInfoTeamsContent(<PlayerTeams teams={res.transfers} />);
+        } else {
+          changeInfoTeamsContent(<p>No teams linked</p>);
+        }
       });
   }, [playerId]);
 

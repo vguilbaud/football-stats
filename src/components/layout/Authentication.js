@@ -1,9 +1,13 @@
 import { useState } from "react";
 import ConnectionModal from "../UI/ConnectionModal";
+import { useContext } from "react";
+import AuthContext from "../../store/auth-context";
 
 const Authentication = (props) => {
   const [connectionModalOpened, setConnectionModalOpened] = useState(false);
   const [isSigning, setIsSigning] = useState();
+
+  const authCtx = useContext(AuthContext);
 
   const openSigningModal = () => {
     setIsSigning(true);
@@ -26,14 +30,24 @@ const Authentication = (props) => {
 
   return (
     <div>
-      <button onClick={openSigningModal}>Sign Up</button>
-      <button onClick={openLoggingModal}>Login</button>
-      {connectionModalOpened && (
-        <ConnectionModal
-          switchSigning={switchSigning}
-          removeModal={removeModal}
-          signing={isSigning}
-        />
+      {!authCtx.isLoggedIn && (
+        <div>
+          <button onClick={openSigningModal}>Sign Up</button>
+          <button onClick={openLoggingModal}>Login</button>
+          {connectionModalOpened && (
+            <ConnectionModal
+              switchSigning={switchSigning}
+              removeModal={removeModal}
+              signing={isSigning}
+            />
+          )}
+        </div>
+      )}
+      {authCtx.isLoggedIn && (
+        <div>
+          <button onClick={authCtx.logout}>Logout</button>
+          <p>Salut, {authCtx.name}!</p>
+        </div>
       )}
     </div>
   );
