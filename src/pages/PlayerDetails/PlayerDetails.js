@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import CommentsForm from "../../components/comments/CommentsForm";
+import AuthContext from "../../store/auth-context";
 import PlayerInfo from "./PlayerInfo";
 import PlayerStats from "./PlayerStats";
 import PlayerTeams from "./PlayerTeams";
@@ -12,6 +14,8 @@ const PlayerDetails = (props) => {
   const [teamId, setTeamId] = useState();
   const location = useLocation();
   const playerId = location.pathname.replace(/[^0-9]/g, "");
+
+  const authCtx = useContext(AuthContext);
 
   useEffect(() => {
     fetch(`http://localhost:4200/api/players/${playerId}`).then((res) =>
@@ -42,6 +46,15 @@ const PlayerDetails = (props) => {
     <div>
       <NavLink to={`/team/${teamId}`}>Back</NavLink>
       {infoPlayerContent}
+      {authCtx.isLoggedIn && (
+        <CommentsForm
+          type="player"
+          userId={authCtx.userId}
+          token={authCtx.token}
+          name={authCtx.name}
+          commentedId={playerId}
+        ></CommentsForm>
+      )}
       {infoStatsContent}
       {infoTeamsContent}
     </div>
