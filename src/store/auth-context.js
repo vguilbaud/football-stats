@@ -6,8 +6,10 @@ const AuthContext = React.createContext({
   name: "",
   userId: "",
   commentsIds: [],
-  login: (token, userId, name, comments) => {},
+  login: (userGiven) => {},
   logout: () => {},
+  addComment: (comment) => {},
+  deleteComment: (commentId) => {},
 });
 
 export const AuthContextProvider = (props) => {
@@ -26,6 +28,25 @@ export const AuthContextProvider = (props) => {
     setUser({});
   };
 
+  const addCommentHandler = (comment) => {
+    let newUser = user;
+    newUser.commentsIds.push(comment);
+    localStorage.setItem("user", JSON.stringify(newUser));
+    setUser(newUser);
+  };
+
+  const deleteCommentHandler = (commentId) => {
+    let newUser = user;
+    let array = user.commentsIds;
+    let index = array.indexOf(commentId);
+    if (index > -1) {
+      array.splice(index, 1);
+    }
+    newUser.comments = array;
+    localStorage.setItem("user", JSON.stringify(newUser));
+    setUser(newUser);
+  };
+
   const contextValue = {
     token: user?.token,
     name: user?.name,
@@ -34,6 +55,8 @@ export const AuthContextProvider = (props) => {
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
+    addComment: addCommentHandler,
+    deleteComment: deleteCommentHandler,
   };
 
   return (
