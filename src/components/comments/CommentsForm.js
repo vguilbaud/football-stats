@@ -22,7 +22,8 @@ const CommentsForm = (props) => {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
+        props.editComment(props.commentId, commentRef.current.value);
+        props.closeEditor();
       })
       .catch((err) => console.log(err));
   };

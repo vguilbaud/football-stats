@@ -1,28 +1,45 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "../../store/auth-context";
 import CommentItem from "./CommentItem";
+import CommentsForm from "./CommentsForm";
 
 const CommentsList = (props) => {
   const [commentList, setCommentList] = useState([]);
+  const authCtx = useContext(AuthContext);
 
-  const setUpComment = (comments) => {
-    if (comments) {
-      return comments.map((comment, i) => {
-        return (
+  const editCommentHandler = (id, message) => {
+    setCommentList((prev) => {
+      let newComs = prev.map((com) => {
+        if (com.props.id === id) {
+          com.props.comment.message = message;
+          return com;
+        }
+        return com;
+      });
+      return newComs;
+    });
+  };
+
+  const deleteCommentHandler = (id) => {
+    setCommentList((prev) => {
+      let newComs = prev.filter((com) => com.props.id !== id);
+      return newComs;
+    });
+  };
+
+  const addNewCommentsHandler = (comment) => {
+    setCommentList((prev) => {
+      let newComs = [
+        ...prev.concat(
           <CommentItem
             deleteThisComment={deleteCommentHandler}
             key={comment._id}
-            index={i}
+            id={comment._id}
             comment={comment}
+            editComment={editCommentHandler}
           />
-        );
-      });
-    }
-  };
-
-  const deleteCommentHandler = (index) => {
-    setCommentList((prev) => {
-      const newComs = [...prev];
-      newComs.splice(index, 1);
+        ),
+      ];
       return newComs;
     });
   };
@@ -43,12 +60,14 @@ const CommentsList = (props) => {
       })
       .then((res) => {
         setCommentList(
-          res.map((comment, i) => {
+          res.map((comment) => {
             return (
               <CommentItem
                 deleteThisComment={deleteCommentHandler}
-                key={`${i}${comment._id}`}
+                key={comment._id}
+                id={comment._id}
                 comment={comment}
+                editComment={editCommentHandler}
               />
             );
           })
@@ -59,8 +78,14 @@ const CommentsList = (props) => {
 
   return (
     <div>
+      {authCtx.isLoggedIn && (
+        <CommentsForm
+          type={props.type}
+          commentedId={props.commentedId}
+          addNewComment={addNewCommentsHandler}
+        ></CommentsForm>
+      )}
       {commentList}
-      {props.newComments && setUpComment(props.newComments)}
     </div>
   );
 };

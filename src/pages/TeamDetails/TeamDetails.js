@@ -4,6 +4,7 @@ import TeamStats from "./TeamStats";
 import TeamInfos from "./TeamInfos";
 import TeamLeaguePlayed from "./TeamLeaguePlayed";
 import PlayerList from "../../components/lists/PlayerList";
+import CommentsList from "../../components/comments/CommentsList";
 
 const TeamCard = (props) => {
   const location = useLocation();
@@ -63,7 +64,7 @@ const TeamCard = (props) => {
               ? URLseason
               : possibleSeasons
                   .map((season) => season.substring(0, 4))
-                  .includes("2021 ?")
+                  .includes("2021")
               ? "2021"
               : possibleSeasons[0].substring(0, 4)
           }
@@ -75,7 +76,7 @@ const TeamCard = (props) => {
             ? URLseason
             : possibleSeasons
                 .map((season) => season.substring(0, 4))
-                .includes("2021 ?")
+                .includes("2021")
             ? "2021"
             : possibleSeasons[0].substring(0, 4)
         }`
@@ -94,7 +95,7 @@ const TeamCard = (props) => {
                   ? URLseason
                   : possibleSeasons
                       .map((season) => season.substring(0, 4))
-                      .includes("2021 ?")
+                      .includes("2021")
                   ? "2021"
                   : possibleSeasons[0].substring(0, 4)
               }
@@ -161,7 +162,7 @@ const TeamCard = (props) => {
                 ? URLseason
                 : possibleSeasons
                     .map((season) => season.substring(0, 4))
-                    .includes("2021 ?")
+                    .includes("2021")
                 ? "2021"
                 : possibleSeasons[0].substring(0, 4)
             }
@@ -194,6 +195,7 @@ const TeamCard = (props) => {
         {teamStatsContent}
         {teamPlayerList}
         {teamLeaguePlayedContent}
+        <CommentsList type="team" commentedId={teamId} />
       </div>
     </div>
   );

@@ -14,6 +14,8 @@ const CommentItem = (props) => {
         type={props.comment.type}
         commentedId={props.comment.commentedId}
         commentId={props.comment._id}
+        editComment={props.editComment}
+        closeEditor={closeEditor}
       />
     );
   };
@@ -34,7 +36,7 @@ const CommentItem = (props) => {
         return res.json();
       })
       .then((res) => {
-        props.deleteThisComment(props.index);
+        props.deleteThisComment(props.id);
       })
       .catch((err) => console.log(err));
   };
@@ -48,6 +50,9 @@ const CommentItem = (props) => {
       {!editor && (
         <div>
           <p>{props.comment.message}</p>
+          <p>
+            By {props.comment.name} on the {props.comment.date}
+          </p>
           {authCtx.userId === props.comment.userId && (
             <button onClick={editingHandler}>Update</button>
           )}
