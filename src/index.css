@@ -12,13 +12,34 @@ code {
     monospace;
 }
 
-.centered {
+/* .centered {
   text-align: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
   flex-wrap: wrap;
   padding: 0;
+} */
+
+.listItemCentered {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  width: 70px;
+  height: 100px;
+  padding: 10px;
+}
+
+.listItem img {
+  width: 70px;
 }
 
 .statsBoard {

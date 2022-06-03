@@ -33,7 +33,7 @@ const PlayerList = (props) => {
   }, [props.teamId, props.season]);
 
   return (
-    <div className="centered">
+    <div>
       <div className="statsBoard">
         <p>Player</p>
         <p>Games</p>

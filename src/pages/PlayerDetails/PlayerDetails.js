@@ -30,7 +30,7 @@ const PlayerDetails = (props) => {
         return res.json();
       })
       .then((res) => {
-        if (res.transfers.length > 0) {
+        if (res.transfers) {
           setTeamId(res.transfers[0].teams.in.id);
           changeInfoTeamsContent(<PlayerTeams teams={res.transfers} />);
         } else {
@@ -41,7 +41,7 @@ const PlayerDetails = (props) => {
 
   return (
     <div>
-      <NavLink to={`/team/${teamId}`}>Back</NavLink>
+      <NavLink to={teamId ? `/team/${teamId}` : `/home`}>Back</NavLink>
       {infoPlayerContent}
       {infoStatsContent}
       {infoTeamsContent}

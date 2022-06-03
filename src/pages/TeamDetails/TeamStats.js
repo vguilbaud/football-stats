@@ -1,6 +1,6 @@
 const TeamStats = (props) => {
   return (
-    <div className="centered">
+    <div>
       <ul>
         <li>Matches: {props.totalStats.matches}</li>
         <li>Wins: {props.totalStats.victories}</li>

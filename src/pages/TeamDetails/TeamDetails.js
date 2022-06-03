@@ -152,7 +152,7 @@ const TeamCard = (props) => {
   };
 
   return (
-    <div className="centered">
+    <div>
       <NavLink to={`/home`}>Back</NavLink>
       {possibleSeasons.length > 0 && (
         <form onChange={changeSeason}>

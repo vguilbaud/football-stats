@@ -51,7 +51,7 @@ const LeaguesList = (props) => {
           defaultValue={URLsearch ? URLsearch : ""}
         ></input>
       </form>
-      <div className="centered">
+      <div className="listItemCentered">
         {leaguesList.map((league) => {
           return (
             <LeagueListItem

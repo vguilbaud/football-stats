@@ -1,12 +1,20 @@
 import PlayerSeasonLeagueStatsBoard from "./PlayerSeasonLeagueStatsBoard";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import classes from "./PlayerSeasonStatsBoard.module.css";
 
 const PlayerSeasonStatsBoard = (props) => {
+  const [isActive, setActive] = useState(false);
   const formatDate = (year) => `${year} - ${(parseInt(year) + 1).toString()}`;
+
+  const toggleStats = () => {
+    setActive(!isActive);
+  };
+
   return (
     <div>
-      <h3>{formatDate(props.season.year)}</h3>
-      <div className="statsBoard">
+      <h3 onClick={toggleStats}>{formatDate(props.season.year)}</h3>
+      <div onClick={toggleStats} className="statsBoard">
         <h4>League</h4>
         <p>Matches</p>
         <p>Goals</p>
@@ -14,7 +22,7 @@ const PlayerSeasonStatsBoard = (props) => {
         <p>Yellows</p>
         <p>Reds</p>
       </div>
-      <div>
+      <div className={isActive ? null : classes.hidden}>
         {props.season.statsLeague.map((league) => {
           return (
             <NavLink
@@ -42,15 +50,17 @@ const PlayerSeasonStatsBoard = (props) => {
           );
         })}
       </div>
-      <PlayerSeasonLeagueStatsBoard
-        name="Total"
-        goals={props.season.totalYear.goals}
-        appearences={props.season.totalYear.appearences}
-        assists={props.season.totalYear.assists}
-        yellows={props.season.totalYear.yellows}
-        reds={props.season.totalYear.reds}
-        assistPresent={props.season.totalYear.assists ? true : false}
-      />
+      <div onClick={toggleStats}>
+        <PlayerSeasonLeagueStatsBoard
+          name="Total"
+          goals={props.season.totalYear.goals}
+          appearences={props.season.totalYear.appearences}
+          assists={props.season.totalYear.assists}
+          yellows={props.season.totalYear.yellows}
+          reds={props.season.totalYear.reds}
+          assistPresent={props.season.totalYear.assists ? true : false}
+        />
+      </div>
     </div>
   );
 };

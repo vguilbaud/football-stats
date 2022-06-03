@@ -72,7 +72,7 @@ const TeamsList = (props) => {
           </select>
         </form>
       )}
-      <div>
+      <div className="listItemCentered">
         {allTeams.map((team) => {
           return (
             <TeamListItem
