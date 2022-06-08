@@ -1,12 +1,14 @@
-import { Fragment } from "react";
-import Authentication from "./Authentication";
+import Header from "./Header";
+import classes from "./Layout.module.css";
+// import Authentication from "./Authentication";
 
 const Layout = (props) => {
   return (
-    <Fragment>
-      <Authentication />
-      <main>{props.children}</main>
-    </Fragment>
+    <div>
+      {/* <Authentication /> */}
+      <Header />
+      <main className={classes.mainContent}>{props.children}</main>
+    </div>
   );
 };
 

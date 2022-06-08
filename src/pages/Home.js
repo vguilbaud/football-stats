@@ -1,10 +1,11 @@
-import LeaguesList from "../components/lists/LeaguesList";
+import LeaguesList from "./LeagueDetails/LeaguesList";
+import classes from "./Home.module.css";
+import Cover from "../images/footstatsCover.png";
 
-const Home = (props) => {
+const Home = () => {
   return (
-    <div>
-      <h1>Football stats</h1>
-      <p>The best tool to know who's the best scorer!</p>
+    <div className={classes.over}>
+      <img className={classes.cover} src={Cover} alt="Cover footstats" />
       <LeaguesList />
     </div>
   );

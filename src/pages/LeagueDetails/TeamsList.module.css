@@ -1,0 +1,27 @@
+.cover {
+  max-width: 100%;
+  margin-top: 54px;
+}
+
+.arrowLogo {
+  color: #fdd123;
+  font-size: 50px;
+}
+
+.leagueInfo {
+  margin-top: -50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.leagueInfo img {
+  max-width: 100px;
+}
+
+.line {
+  width: 50px;
+  margin-top: 20px;
+  border-bottom: solid 1px #d7d7d7;
+}

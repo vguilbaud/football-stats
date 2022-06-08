@@ -1,7 +1,9 @@
 import { useLocation, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import TeamListItem from "./TeamListItem";
+import classes from "./TeamsList.module.css";
+import Cover from "../../images/footstatsCover.png";
 
 const TeamsList = (props) => {
   const location = useLocation();
@@ -12,6 +14,7 @@ const TeamsList = (props) => {
   const [seasonChosen, changeSeasonHandler] = useState(URLseason);
   const [possibleSeasons, changePossibleSeason] = useState([]);
   const [allTeams, changeTeamsDisplayed] = useState([]);
+  const [leagueInfo, changeLeagueInfo] = useState({ name: "", logo: "" });
 
   const leagueId = location.pathname
     .replace(/[^0-9]/g, "")
@@ -21,7 +24,11 @@ const TeamsList = (props) => {
     fetch(`http://localhost:4200/api/leagues/getSeasonsPlayed/${leagueId}`)
       .then((res) => res.json())
       .then((response) => {
-        changePossibleSeason(response);
+        changePossibleSeason(response.seasons);
+        changeLeagueInfo({
+          name: response.league.name,
+          logo: response.league.logo,
+        });
       });
   }, [leagueId]);
 
@@ -55,24 +62,43 @@ const TeamsList = (props) => {
 
   return (
     <div>
-      <NavLink to={`/home`}>Back</NavLink>
-      {possibleSeasons.length > 0 && (
-        <form onChange={changeSeason}>
-          <select defaultValue={URLseason ? URLseason : "2021"}>
-            {possibleSeasons.map((season) => {
-              return (
-                <option
-                  key={`league${season.replace(" ", "")}`}
-                  value={season.substring(0, 4)}
-                >
-                  {season}
-                </option>
-              );
-            })}
-          </select>
-        </form>
-      )}
-      <div className="listItemCentered">
+      <img className={classes.cover} src={Cover} alt="Cover footstats" />
+      <Link
+        style={{ textDecoration: "none" }}
+        to={`/home`}
+        className={classes.arrowLogo}
+      >
+        ←
+      </Link>
+      <div className={classes.leagueInfo}>
+        {leagueInfo.name && (
+          <div>
+            <img src={leagueInfo.logo} alt={`${leagueInfo.name} logo`} />
+            <p>{leagueInfo.name}</p>
+          </div>
+        )}
+        {possibleSeasons.length > 0 && (
+          <form onChange={changeSeason}>
+            <select
+              className="seasonSelect"
+              defaultValue={URLseason ? URLseason : "2021"}
+            >
+              {possibleSeasons.map((season) => {
+                return (
+                  <option
+                    key={`league${season.replace(" ", "")}`}
+                    value={season.substring(0, 4)}
+                  >
+                    {season}
+                  </option>
+                );
+              })}
+            </select>
+          </form>
+        )}
+        <div className={classes.line}></div>
+      </div>
+      <div className="listLeagueTeam">
         {allTeams.map((team) => {
           return (
             <TeamListItem

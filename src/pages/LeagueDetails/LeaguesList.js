@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
+import classes from "./LeaguesList.module.css";
 import { leagues } from "../../hardcode";
 import LeagueListItem from "./LeagueListItem";
+import searchLogo from "../../logos/searchLogo.png";
 
 const LeaguesList = (props) => {
   const [leaguesList, setLeaguesList] = useState([]);
@@ -22,7 +24,10 @@ const LeaguesList = (props) => {
     } else if (!URLsearch) {
       setLeaguesList(leagues);
     }
-  }, [URLsearch]);
+    if (location.hash) {
+      document.getElementById("anchorLeague").scrollIntoView();
+    }
+  }, [URLsearch, location.hash]);
 
   const searchLeague = (search) => {
     search.preventDefault();
@@ -43,15 +48,20 @@ const LeaguesList = (props) => {
 
   return (
     <div>
-      <form onChange={searchLeague}>
+      <form onChange={searchLeague} className={classes.searchBar}>
+        <label htmlFor="search">
+          <img src={searchLogo} alt={searchLogo} />
+        </label>
         <input
+          id="search"
           type="text"
-          placeholder="Search for a league, min 4 characters"
+          placeholder="Rechercher d'abord une ligue"
           min="4"
+          autoFocus={true}
           defaultValue={URLsearch ? URLsearch : ""}
         ></input>
       </form>
-      <div className="listItemCentered">
+      <div id="anchorLeague" className="listLeagueTeam">
         {leaguesList.map((league) => {
           return (
             <LeagueListItem

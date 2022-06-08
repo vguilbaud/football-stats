@@ -3,7 +3,7 @@ import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import TeamDetails from "./pages/TeamDetails/TeamDetails";
 import PlayerDetails from "./pages/PlayerDetails/PlayerDetails";
-import TeamsList from "./components/lists/TeamsList";
+import TeamsList from "./pages/LeagueDetails/TeamsList";
 
 function App() {
   return (
@@ -23,6 +23,9 @@ function App() {
         </Route>
         <Route path="/player/:playerId">
           <PlayerDetails />
+        </Route>
+        <Route path="*">
+          <Redirect to="/home" />
         </Route>
       </Switch>
     </Layout>
