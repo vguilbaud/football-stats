@@ -5,24 +5,28 @@ const TeamStats = (props) => {
     <div>
       <ul className={classes.teamStats}>
         <li className={classes.statsMatch}>
+          <span className={classes.statsNumber}>
+            {props.totalStats.matches}
+          </span>
           <span>Matchs</span>
-          <span> {props.totalStats.matches}</span>
         </li>
         <li className={classes.statsGoal}>
+          <span className={classes.statsNumber}> {props.totalStats.goals}</span>
           <span>Buts</span>
-          <span> {props.totalStats.goals}</span>
         </li>
         <li className={classes.statsVictories}>
+          <span className={classes.statsNumber}>
+            {props.totalStats.victories}
+          </span>
           <span>Victoires</span>
-          <span> {props.totalStats.victories}</span>
         </li>
         <li className={classes.statsLoses}>
+          <span className={classes.statsNumber}> {props.totalStats.loses}</span>
           <span>Défaites</span>
-          <span> {props.totalStats.loses}</span>
         </li>
         <li className={classes.statsDraws}>
+          <span className={classes.statsNumber}> {props.totalStats.draws}</span>
           <span>Matchs nuls</span>
-          <span> {props.totalStats.draws}</span>
         </li>
       </ul>
     </div>

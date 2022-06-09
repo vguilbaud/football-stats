@@ -1,0 +1,13 @@
+.whole {
+  margin-top: 20px;
+}
+.whole button {
+  margin-right: 10px;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.loggedIn {
+  display: flex;
+  align-items: center;
+}

@@ -3,10 +3,62 @@
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
+  margin-left: -30px;
+  margin-right: 10px;
 }
 
 .teamStats li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 12px;
+  border-radius: 5px;
+}
+.statsNumber {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.statsMatch {
+  background-color: #f6f6f6;
+  width: 160px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.statsGoal {
+  background-color: #d9d9d9;
+  width: 160px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.statsVictories {
+  background-color: #b1e49f;
+  width: 100px;
+  height: 80px;
+}
+
+.statsLoses {
+  background-color: #fe715e;
+  width: 100px;
+  height: 80px;
+}
+
+.statsDraws {
+  background-color: #ffc42b;
+  width: 100px;
+  height: 80px;
+}
+
+@media (max-width: 350px) {
+  .statsMatch {
+    width: 270px;
+  }
+  .statsGoal {
+    width: 100px;
+  }
 }

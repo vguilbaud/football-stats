@@ -126,8 +126,10 @@ const SignUpLogin = (props) => {
 
   return (
     <div className={classes.modal}>
-      <button onClick={props.removeModal}>Back</button>
-      <button onClick={handleSwitching}>
+      <button className="button" onClick={props.removeModal}>
+        Back
+      </button>
+      <button className="button" onClick={handleSwitching}>
         {props.signing ? "Login" : "Sign Up"}
       </button>
       <h3>{props.signing ? "Sign Up" : "Login"}</h3>
@@ -156,7 +158,9 @@ const SignUpLogin = (props) => {
             ""
           )}
         </div>
-        <button>{props.signing ? "Sign Up" : "Login"}</button>
+        <button className="button">
+          {props.signing ? "Sign Up" : "Login"}
+        </button>
       </form>
     </div>
   );

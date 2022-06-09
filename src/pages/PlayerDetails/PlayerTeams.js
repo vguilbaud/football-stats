@@ -1,5 +1,5 @@
 import classes from "./PlayerTeams.module.css";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PlayerTeams = (props) => {
   let allTeams = [];
@@ -21,10 +21,10 @@ const PlayerTeams = (props) => {
       <div className={classes.teamBoard}>
         {allTeams.map((team, i) => {
           return (
-            <NavLink to={`/team/${team.id}`} key={`transfert${team.id}${i}`}>
+            <Link to={`/team/${team.id}`} key={`transfert${team.id}${i}`}>
               <img src={team.logo} alt={`${team.name} logo`} />
               <p>{team.name}</p>
-            </NavLink>
+            </Link>
           );
         })}
       </div>

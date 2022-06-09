@@ -29,18 +29,20 @@ const CommentsList = (props) => {
 
   const addNewCommentsHandler = (comment) => {
     setCommentList((prev) => {
-      let newComs = [
-        ...prev.concat(
-          <CommentItem
-            deleteThisComment={deleteCommentHandler}
-            key={comment._id}
-            id={comment._id}
-            comment={comment}
-            editComment={editCommentHandler}
-          />
-        ),
-      ];
-      return newComs;
+      if (comment.message) {
+        let newComs = [
+          ...prev.concat(
+            <CommentItem
+              deleteThisComment={deleteCommentHandler}
+              key={comment._id}
+              id={comment._id}
+              comment={comment}
+              editComment={editCommentHandler}
+            />
+          ),
+        ];
+        return newComs;
+      } else return prev;
     });
   };
 
@@ -60,17 +62,19 @@ const CommentsList = (props) => {
       })
       .then((res) => {
         setCommentList(
-          res.map((comment) => {
-            return (
-              <CommentItem
-                deleteThisComment={deleteCommentHandler}
-                key={comment._id}
-                id={comment._id}
-                comment={comment}
-                editComment={editCommentHandler}
-              />
-            );
-          })
+          res
+            .filter((comment) => comment.message)
+            .map((comment) => {
+              return (
+                <CommentItem
+                  deleteThisComment={deleteCommentHandler}
+                  key={comment._id}
+                  id={comment._id}
+                  comment={comment}
+                  editComment={editCommentHandler}
+                />
+              );
+            })
         );
       })
       .catch((err) => console.log(err));
@@ -85,6 +89,7 @@ const CommentsList = (props) => {
           addNewComment={addNewCommentsHandler}
         ></CommentsForm>
       )}
+      <h3>Commentaires</h3>
       {commentList}
     </div>
   );

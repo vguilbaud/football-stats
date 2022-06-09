@@ -6,6 +6,7 @@ import TeamInfos from "./TeamInfos";
 import TeamLeaguePlayed from "./TeamLeaguePlayed";
 import PlayerList from "../../components/lists/PlayerList";
 import CommentsList from "../../components/comments/CommentsList";
+import Authentication from "../../components/UI/Authentication";
 
 const TeamCard = (props) => {
   const location = useLocation();
@@ -195,6 +196,7 @@ const TeamCard = (props) => {
       {teamStatsContent}
       {teamPlayerList}
       {teamLeaguePlayedContent}
+      <Authentication />
       <CommentsList type="team" commentedId={teamId} />
     </div>
   );

@@ -1,5 +1,6 @@
 import { useContext, useRef } from "react";
 import AuthContext from "../../store/auth-context";
+import classes from "./Comments.module.css";
 
 const CommentsForm = (props) => {
   const authCtx = useContext(AuthContext);
@@ -55,17 +56,18 @@ const CommentsForm = (props) => {
       .catch((err) => console.log(err));
   };
   return (
-    <div>
-      <label htmlFor="comment">
-        {!props.updating ? "Add a comment" : "Edit comment"}
-      </label>
+    <div className={classes.commentForm}>
       <input
         id="comment"
         type="text"
         ref={commentRef}
         defaultValue={props.initialValue ? props.initialValue : ""}
+        placeholder="100 characters max"
       />
-      <button onClick={props.updating ? editComment : addComment}>
+      <button
+        className="button"
+        onClick={props.updating ? editComment : addComment}
+      >
         {props.updating ? "Edit Comment" : "Add Comment"}
       </button>
     </div>

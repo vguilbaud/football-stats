@@ -1,7 +1,8 @@
 import { useState } from "react";
-import ConnectionModal from "../UI/ConnectionModal";
+import ConnectionModal from "./ConnectionModal";
 import { useContext } from "react";
 import AuthContext from "../../store/auth-context";
+import classes from "./Authentication.module.css";
 
 const Authentication = (props) => {
   const [connectionModalOpened, setConnectionModalOpened] = useState(false);
@@ -29,11 +30,15 @@ const Authentication = (props) => {
   };
 
   return (
-    <div>
+    <div className={classes.whole}>
       {!authCtx.isLoggedIn && (
-        <div>
-          <button onClick={openSigningModal}>Sign Up</button>
-          <button onClick={openLoggingModal}>Login</button>
+        <div className={classes.buttonFlex}>
+          <button className="button" onClick={openSigningModal}>
+            Sign Up
+          </button>
+          <button className="button" onClick={openLoggingModal}>
+            Login
+          </button>
           {connectionModalOpened && (
             <ConnectionModal
               switchSigning={switchSigning}
@@ -41,11 +46,14 @@ const Authentication = (props) => {
               signing={isSigning}
             />
           )}
+          <p>Sign in to be able to write comments</p>
         </div>
       )}
       {authCtx.isLoggedIn && (
-        <div>
-          <button onClick={authCtx.logout}>Logout</button>
+        <div className={classes.loggedIn}>
+          <button className="button" onClick={authCtx.logout}>
+            Logout
+          </button>
           <p>Salut, {authCtx.name}!</p>
         </div>
       )}

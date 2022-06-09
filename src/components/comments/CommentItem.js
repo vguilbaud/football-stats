@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import AuthContext from "../../store/auth-context";
 import CommentsForm from "./CommentsForm";
+import classes from "./Comments.module.css";
 
 const CommentItem = (props) => {
   const authCtx = useContext(AuthContext);
@@ -46,23 +47,39 @@ const CommentItem = (props) => {
   };
 
   return (
-    <div>
+    <div className={classes.commentItem}>
       {!editor && (
         <div>
-          <p>{props.comment.message}</p>
+          <div className={classes.flexButtons}>
+            <p className={classes.message}>{props.comment.message}</p>
+            <div>
+              {authCtx.userId === props.comment.userId && (
+                <button className="button" onClick={editingHandler}>
+                  Update
+                </button>
+              )}
+              {authCtx.userId === props.comment.userId && (
+                <button
+                  className={`button ${classes.redButton}`}
+                  onClick={deleteComment}
+                >
+                  Delete
+                </button>
+              )}
+            </div>
+          </div>
           <p>
-            By {props.comment.name} on the {props.comment.date}
+            Par {props.comment.name} le{" "}
+            {new Date(props.comment.date).toLocaleDateString("fr")}
           </p>
-          {authCtx.userId === props.comment.userId && (
-            <button onClick={editingHandler}>Update</button>
-          )}
-          {authCtx.userId === props.comment.userId && (
-            <button onClick={deleteComment}>Delete</button>
-          )}
         </div>
       )}
       {editor}
-      {editor && <button onClick={closeEditor}>Cancel</button>}
+      {editor && (
+        <button className={`button ${classes.redButton}`} onClick={closeEditor}>
+          Cancel
+        </button>
+      )}
     </div>
   );
 };

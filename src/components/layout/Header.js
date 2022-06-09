@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className={classes.header}>
+    <header id="top" className={classes.header}>
       <Link to={"/home"}>
         <img src={Logo} alt="Logo footstats" />
       </Link>
       <Link to={"/home#anchorLeague"}>
-        <button>Rechercher des stats</button>
+        <button className="button">Rechercher des stats</button>
       </Link>
-    </div>
+    </header>
   );
 };
 

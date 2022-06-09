@@ -1,0 +1,35 @@
+.commentForm {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.commentForm input {
+  width: 200px;
+  margin-right: 20px;
+  border-radius: 5px;
+  border: 2px solid #f6f6f6;
+}
+
+.commentItem {
+  border-bottom: solid 1px #f6f6f6;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  max-width: 370px;
+}
+
+.flexButtons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.message {
+  max-width: 240px;
+  overflow: scroll;
+}
+
+.redButton {
+  border: 1px solid red;
+  margin-left: 20px;
+}

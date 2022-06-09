@@ -12,10 +12,19 @@
   position: fixed;
   top: 30vh;
   left: 10%;
-  width: 80%;
+  width: 70%;
   z-index: 100;
   overflow: hidden;
-  background-color: grey;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.modal button {
+  background-color: white;
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 15px;
 }
 
 .control {
@@ -31,7 +40,7 @@
 
 .control input {
   display: block;
-  width: 100%;
+  width: 90%;
   font: inherit;
   padding: 0.2rem;
   border-radius: 12px;
@@ -40,7 +49,7 @@
 
 .control input:focus {
   outline: none;
-  border-color: #230052;
+  border-color: #f7cb2a;
 }
 
 .error {

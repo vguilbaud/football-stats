@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import CommentsList from "../../components/comments/CommentsList";
+import Authentication from "../../components/UI/Authentication";
 import PlayerInfo from "./PlayerInfo";
 import PlayerStats from "./PlayerStats";
 import PlayerTeams from "./PlayerTeams";
@@ -41,11 +42,12 @@ const PlayerDetails = (props) => {
 
   return (
     <div>
-      <NavLink to={teamId ? `/team/${teamId}` : `/home`}>Back</NavLink>
+      <Link to={teamId ? `/team/${teamId}` : `/home`}>Back</Link>
       {infoPlayerContent}
       {infoStatsContent}
       {infoTeamsContent}
       <CommentsList type="player" commentedId={playerId} />
+      <Authentication />
     </div>
   );
 };
