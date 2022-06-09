@@ -1,0 +1,42 @@
+.teamInfo {
+  padding-top: 60px;
+  position: relative;
+}
+
+.teamTitle {
+  padding: 30px 20px 30px 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  background: linear-gradient(285.93deg, #0088a6 0%, #00c5f0 100%);
+  margin-bottom: 50px;
+}
+
+.teamTitle img {
+  width: 100px;
+  margin-right: 90px;
+}
+
+.teamTitle h2 {
+  text-align: center;
+  color: white;
+  font-style: italic;
+  font-weight: 1000;
+  font-family: "Roboto";
+}
+
+.teamTitle h2 span {
+  font-weight: 500;
+}
+
+.arrowLogo {
+  color: #fdd123;
+  font-size: 40px;
+  position: absolute;
+  top: -15px;
+  left: 10px;
+}
+
+.coach span {
+  font-weight: bold;
+}

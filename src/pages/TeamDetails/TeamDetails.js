@@ -1,5 +1,6 @@
-import { useLocation, NavLink, useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
+import classes from "./TeamDetails.module.css";
 import TeamStats from "./TeamStats";
 import TeamInfos from "./TeamInfos";
 import TeamLeaguePlayed from "./TeamLeaguePlayed";
@@ -153,10 +154,11 @@ const TeamCard = (props) => {
 
   return (
     <div>
-      <NavLink to={`/home`}>Back</NavLink>
+      {teamInfosContent}
       {possibleSeasons.length > 0 && (
-        <form onChange={changeSeason}>
+        <form onChange={changeSeason} className={classes.seasonSelectForm}>
           <select
+            className={`seasonSelect ${classes.seasonSelectPosition}`}
             defaultValue={
               URLseason
                 ? URLseason
@@ -190,13 +192,10 @@ const TeamCard = (props) => {
           </select>
         </form>
       )}
-      <div>
-        {teamInfosContent}
-        {teamStatsContent}
-        {teamPlayerList}
-        {teamLeaguePlayedContent}
-        <CommentsList type="team" commentedId={teamId} />
-      </div>
+      {teamStatsContent}
+      {teamPlayerList}
+      {teamLeaguePlayedContent}
+      <CommentsList type="team" commentedId={teamId} />
     </div>
   );
 };

@@ -1,0 +1,12 @@
+.teamStats {
+  list-style-type: none;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.teamStats li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

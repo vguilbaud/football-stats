@@ -13,6 +13,7 @@ const PlayerList = (props) => {
           return res.json();
         })
         .then((allPlayers) => {
+          console.log(allPlayers);
           addPlayerList(
             allPlayers
               .sort((a, b) => b.goals - a.goals)
@@ -34,6 +35,7 @@ const PlayerList = (props) => {
 
   return (
     <div>
+      <h3>Les buteurs cette saison ({playerList.length}):</h3>
       <div className="statsBoard">
         <p>Player</p>
         <p>Games</p>
