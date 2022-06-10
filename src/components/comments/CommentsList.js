@@ -61,6 +61,7 @@ const CommentsList = (props) => {
         return response.json();
       })
       .then((res) => {
+        console.log(res);
         setCommentList(
           res
             .filter((comment) => comment.message)

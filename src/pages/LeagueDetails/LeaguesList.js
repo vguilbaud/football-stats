@@ -24,9 +24,6 @@ const LeaguesList = (props) => {
     } else if (!URLsearch) {
       setLeaguesList(leagues);
     }
-    if (location.hash) {
-      document.getElementById("anchorLeague").scrollIntoView();
-    }
   }, [URLsearch, location.hash]);
 
   const searchLeague = (search) => {
@@ -61,7 +58,7 @@ const LeaguesList = (props) => {
           defaultValue={URLsearch ? URLsearch : ""}
         ></input>
       </form>
-      <div id="anchorLeague" className="listLeagueTeam">
+      <div id="stats" className="listLeagueTeam">
         {leaguesList.map((league) => {
           return (
             <LeagueListItem

@@ -145,7 +145,7 @@ const TeamCard = (props) => {
 
   const changeSeason = (input) => {
     setTimeout(() => {
-      history.push({
+      history.replace({
         pathname: location.pathname,
         search: `?season=${input.target.value}`,
       });
@@ -154,7 +154,7 @@ const TeamCard = (props) => {
   };
 
   return (
-    <div>
+    <div className={classes.allTeams}>
       {teamInfosContent}
       {possibleSeasons.length > 0 && (
         <form onChange={changeSeason} className={classes.seasonSelectForm}>
@@ -176,7 +176,7 @@ const TeamCard = (props) => {
                   key={`team${season.replace(" ", "")}`}
                   value={season.substring(0, 4)}
                 >
-                  {season}
+                  {`Saison ${season}`}
                 </option>
               );
             })}

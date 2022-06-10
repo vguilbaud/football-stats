@@ -3,14 +3,18 @@ import Logo from "../../images/footstatsLogo.png";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const getStats = () => {
+    document.getElementById("stats").scrollIntoView();
+  };
+
   return (
     <header id="top" className={classes.header}>
       <Link to={"/home"}>
         <img src={Logo} alt="Logo footstats" />
       </Link>
-      <Link to={"/home#anchorLeague"}>
+      <div onClick={getStats}>
         <button className="button">Rechercher des stats</button>
-      </Link>
+      </div>
     </header>
   );
 };

@@ -1,4 +1,4 @@
-import classes from "./PlayerTeams.module.css";
+// import classes from "./PlayerTeams.module.css";
 import { Link, useLocation } from "react-router-dom";
 
 const PlayerTeams = (props) => {
@@ -20,16 +20,22 @@ const PlayerTeams = (props) => {
 
   return (
     <div>
-      <h3>Teams Played</h3>
-      <div className={classes.teamBoard}>
+      <h3>Les clubs où il a joué :</h3>
+      <div className="listLeagueTeam" style={{ marginBottom: "20px" }}>
         {allTeams.map((team, i) => {
           return (
             <Link
+              style={{ textDecoration: "none" }}
               to={`/team/${team.id}?season=${URLseason ? URLseason : "2021"}`}
               key={`transfert${team.id}${i}`}
             >
-              <img src={team.logo} alt={`${team.name} logo`} />
-              <p>{team.name}</p>
+              <div className="listItem">
+                <img src={team.logo} alt={`${team.name} logo`} />
+                <p>{team.name}</p>
+                <div className="listArrow">
+                  <div className="arrowFlex">{">"}</div>
+                </div>
+              </div>
             </Link>
           );
         })}

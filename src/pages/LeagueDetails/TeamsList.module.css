@@ -8,6 +8,11 @@
   font-size: 50px;
 }
 
+.arrowLogo:hover {
+  cursor: pointer;
+  color: #006a82;
+}
+
 .leagueInfo {
   margin-top: -50px;
   display: flex;
@@ -24,4 +29,15 @@
   width: 50px;
   margin-top: 20px;
   border-bottom: solid 1px #d7d7d7;
+}
+
+@media (min-width: 1000px) {
+  .cover {
+    width: 600px;
+  }
+  .over {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

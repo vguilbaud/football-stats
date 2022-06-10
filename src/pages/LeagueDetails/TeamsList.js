@@ -1,6 +1,5 @@
 import { useLocation, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import TeamListItem from "./TeamListItem";
 import classes from "./TeamsList.module.css";
 import Cover from "../../images/footstatsCover.png";
@@ -52,24 +51,25 @@ const TeamsList = (props) => {
 
   const changeSeason = (input) => {
     setTimeout(() => {
-      history.push({
+      history.replace({
         pathname: location.pathname,
         search: `?season=${input.target.value}`,
       });
       changeSeasonHandler(input.target.value);
     }, 1000);
   };
+  const goBack = () => {
+    history.goBack();
+  };
 
   return (
-    <div>
-      <img className={classes.cover} src={Cover} alt="Cover footstats" />
-      <Link
-        style={{ textDecoration: "none" }}
-        to={`/home`}
-        className={classes.arrowLogo}
-      >
-        ←
-      </Link>
+    <div className={classes.over}>
+      <div>
+        <img className={classes.cover} src={Cover} alt="Cover footstats" />
+        <div onClick={goBack} className={classes.arrowLogo}>
+          ←
+        </div>
+      </div>
       <div className={classes.leagueInfo}>
         {leagueInfo.name && (
           <div>
@@ -78,7 +78,7 @@ const TeamsList = (props) => {
           </div>
         )}
         {possibleSeasons.length > 0 && (
-          <form onChange={changeSeason}>
+          <form id="stats" onChange={changeSeason}>
             <select
               className="seasonSelect"
               defaultValue={URLseason ? URLseason : "2021"}

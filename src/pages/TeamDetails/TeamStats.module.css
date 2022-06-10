@@ -62,3 +62,14 @@
     width: 100px;
   }
 }
+@media (min-width: 1000px) {
+  .teamStats {
+    width: 700px;
+  }
+  .statsMatch {
+    width: 100px;
+  }
+  .statsGoal {
+    width: 100px;
+  }
+}

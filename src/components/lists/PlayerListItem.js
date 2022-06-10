@@ -14,10 +14,14 @@ const PlayerListItem = (props) => {
       <p className="statsBoardGoals">{props.player.goals}</p>
       <div className="borderStats"></div>
       <p className="statsBoardAssists">{props.player.assists}</p>
-      <div className="statsBoardCards borderStats"></div>
-      <div className={"statsBoardCards"}>{props.player.yellows}</div>
-      <div className="statsBoardCards borderStats"></div>
-      <div className="statsBoardCards">{props.player.reds}</div>
+      <div className="statsBoardCardsInvisible borderStats"></div>
+      <div className={"statsBoardCardsInvisible statsBoardCards"}>
+        <div className="cardFlex">{props.player.yellows}</div>
+      </div>
+      <div className="statsBoardCardsInvisible borderStats"></div>
+      <div className="statsBoardCardsInvisible statsBoardCards">
+        <div className="cardFlex">{props.player.reds}</div>
+      </div>
     </Link>
   );
 };

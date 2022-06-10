@@ -5,7 +5,7 @@ import classes from "./Layout.module.css";
 
 const Layout = (props) => {
   return (
-    <div>
+    <div className={classes.layout}>
       <Header />
       <main className={classes.mainContent}>{props.children}</main>
       <Footer />

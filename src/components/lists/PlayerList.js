@@ -35,7 +35,7 @@ const PlayerList = (props) => {
 
   return (
     <div>
-      <h3>Les buteurs cette saison ({playerList.length}):</h3>
+      <h3 id="stats">Les buteurs cette saison ({playerList.length}):</h3>
       <div className={`statsBoard statsBoardTitle`}>
         <p className="statsBoardPlayer">Joueur</p>
         <div className="borderStats"></div>
@@ -44,10 +44,18 @@ const PlayerList = (props) => {
         <p className="statsBoardGoals">Buts</p>
         <div className="borderStats"></div>
         <p className="statsBoardAssists">Assists</p>
-        <div className="statsBoardCards borderStats"></div>
-        <div className="statsBoardCards"></div>
-        <div className="statsBoardCards borderStats"></div>
-        <div className="statsBoardCards"></div>
+        <div className="statsBoardCardsInvisible borderStats"></div>
+        <div className="statsBoardCardsInvisible statsBoardCard">
+          <div className="cardFlex">
+            <div className="yellowCard"></div>
+          </div>
+        </div>
+        <div className="statsBoardCardsInvisible borderStats"></div>
+        <div className="statsBoardCardsInvisible statsBoardCard">
+          <div className="cardFlex">
+            <div className="redCard"></div>
+          </div>
+        </div>
       </div>
       {playerList}
     </div>

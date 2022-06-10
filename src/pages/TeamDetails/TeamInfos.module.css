@@ -33,10 +33,30 @@
   color: #fdd123;
   font-size: 40px;
   position: absolute;
-  top: -15px;
+  top: 45px;
   left: 10px;
+  z-index: 10;
+}
+
+.arrowLogo:hover {
+  cursor: pointer;
+  color: #006a82;
 }
 
 .coach span {
   font-weight: bold;
+}
+
+@media (min-width: 1000px) {
+  .teamTitle {
+    width: 770px;
+    padding-left: 30px;
+  }
+  .teamTitle img {
+    margin-left: 70px;
+  }
+
+  .teamTitle h2 {
+    margin-left: 180px;
+  }
 }

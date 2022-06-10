@@ -9,7 +9,9 @@ const TeamListItem = (props) => {
       <div className="listItem">
         <img src={props.team.logo} alt={`${props.team.name} logo`} />
         <p>{props.team.name}</p>
-        <div className="listArrow">{">"}</div>
+        <div className="listArrow">
+          <div className="arrowFlex">{">"}</div>
+        </div>
       </div>
     </Link>
   );

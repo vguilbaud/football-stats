@@ -6,7 +6,9 @@ const LeagueListItem = (props) => {
       <div className="listItem">
         <img src={props.league.logo} alt={`${props.league.name} logo`} />
         <p>{props.league.name}</p>
-        <div className="listArrow">{">"}</div>
+        <div className="listArrow">
+          <div className="arrowFlex">{">"}</div>
+        </div>
       </div>
     </Link>
   );

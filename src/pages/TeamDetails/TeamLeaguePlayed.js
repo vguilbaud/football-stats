@@ -13,7 +13,9 @@ const TeamLeaguePlayed = (props) => {
           >
             <img src={league.logo} alt={`${league.name} logo`} />
             <p>{league.name}</p>
-            <div className="listArrow">{">"}</div>
+            <div className="listArrow">
+              <div className="arrowFlex">{">"}</div>
+            </div>
           </Link>
         );
       })}

@@ -6,6 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
@@ -17,7 +20,7 @@ code {
 
 #root {
   margin: auto;
-  max-width: 372px;
+  max-width: 402px;
 }
 
 .button {
@@ -64,6 +67,10 @@ code {
   text-align: center;
   font-size: 12px;
 }
+.listItem:hover .listArrow {
+  border: 1px solid grey;
+  color: grey;
+}
 
 .listItem img {
   max-width: 110px;
@@ -84,9 +91,8 @@ code {
   color: #f7cb2a;
 }
 
-.listArrow:hover {
-  border: 0.5px solid grey;
-  color: grey;
+.arrowFlex {
+  margin-top: -3px;
 }
 
 .seasonSelect {
@@ -100,6 +106,7 @@ code {
 }
 
 .statsBoard {
+  font-size: 13px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -108,6 +115,7 @@ code {
   font-family: Roboto;
   background-color: #f6f6f6;
   color: #414141;
+  border-radius: 5px;
 }
 
 .statsBoard div {
@@ -125,8 +133,21 @@ code {
   margin-bottom: 2px;
 }
 
-.statsBoardCards {
-  display: none;
+@media (max-width: 1000px) {
+  .statsBoardCardsInvisible {
+    display: none;
+  }
+}
+
+.statsBoardTitle div .yellowCard {
+  background-color: #f7cb2a;
+  width: 14px;
+  height: 24px;
+}
+.statsBoardTitle div .redCard {
+  background-color: #fe715e;
+  width: 14px;
+  height: 24px;
 }
 
 .statsBoardPlayer {
@@ -149,6 +170,9 @@ code {
   font-weight: 700;
   width: 16%;
 }
+.statsBoardCards {
+  font-weight: 700;
+}
 
 .borderStats {
   width: 1px;
@@ -165,4 +189,53 @@ footer {
   background-color: #f6f6f6;
   color: #231c1f;
   margin-bottom: 10px;
+}
+
+@media (min-width: 1000px) {
+  #root {
+    max-width: 1000px;
+  }
+
+  .listLeagueTeam {
+    padding-left: 60px;
+  }
+
+  footer {
+    width: 1000px;
+    padding-left: 220px;
+  }
+
+  .statsBoard {
+    max-width: 650px;
+  }
+
+  .statsBoardTitle {
+    width: 650px;
+  }
+  .statsBoardCard {
+    width: 12%;
+  }
+
+  .cardFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .statsBoardPlayer {
+    width: 30%;
+  }
+  .statsBoardMatches {
+    width: 12%;
+  }
+
+  .statsBoardGoals {
+    width: 12%;
+  }
+  .statsBoardAssists {
+    width: 12%;
+  }
+  .statsBoardCards {
+    width: 12%;
+  }
 }

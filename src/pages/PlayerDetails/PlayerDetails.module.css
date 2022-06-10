@@ -1,21 +1,20 @@
-.seasonSelectForm {
+.formRelative {
   position: relative;
 }
-
-.seasonSelectPosition {
+.seasonPosition {
   position: absolute;
-  top: -80px;
-  left: 130px;
+  top: -10px;
+  left: 110px;
 }
 
 @media (min-width: 1000px) {
-  .allTeams {
+  .playerContent {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .seasonSelectPosition {
-    left: -68px;
+  .seasonPosition {
+    left: -70px;
   }
 }

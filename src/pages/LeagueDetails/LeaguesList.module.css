@@ -40,3 +40,10 @@
 .searchBar input:focus {
   outline: none;
 }
+
+@media (min-width: 1000px) {
+  .searchBar {
+    top: 425px;
+    left: 320px;
+  }
+}

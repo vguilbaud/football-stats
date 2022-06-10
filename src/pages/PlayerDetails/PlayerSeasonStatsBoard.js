@@ -1,18 +1,68 @@
 import PlayerSeasonLeagueStatsBoard from "./PlayerSeasonLeagueStatsBoard";
 import { Link } from "react-router-dom";
-// import classes from "./PlayerSeasonStatsBoard.module.css";
+import classes from "./PlayerSeasonStatsBoard.module.css";
 
 const PlayerSeasonStatsBoard = (props) => {
   return (
     <div>
-      <h3>{props.season.year}</h3>
-      <div className="statsBoard">
-        <h4>League</h4>
-        <p>Matches</p>
-        <p>Goals</p>
-        {props.season.totalYear.assists > 0 && <p>Assists</p>}
-        <p>Yellows</p>
-        <p>Reds</p>
+      <div>
+        <ul className={classes.playerStats}>
+          <li className={classes.statsMatch}>
+            <span className={classes.statsNumber}>
+              {props.season.totalYear.appearences}
+            </span>
+            <span>Matchs</span>
+          </li>
+          <li className={classes.statsGoal}>
+            <span className={classes.statsNumber}>
+              {" "}
+              {props.season.totalYear.goals}
+            </span>
+            <span>Buts</span>
+          </li>
+          <li className={classes.statsAssists}>
+            <span className={classes.statsNumber}>
+              {props.season.totalYear.assists}
+            </span>
+            <span>Assists</span>
+          </li>
+          <li className={classes.statsYellows}>
+            <span className={classes.statsNumber}>
+              {" "}
+              {props.season.totalYear.yellows}
+            </span>
+            <span>Cartons jaunes</span>
+          </li>
+          <li className={classes.statsReds}>
+            <span className={classes.statsNumber}>
+              {" "}
+              {props.season.totalYear.reds}
+            </span>
+            <span>Cartons rouges</span>
+          </li>
+        </ul>
+      </div>
+      <h3 id="stats">Stats saison {props.season.year}</h3>
+      <div className={`statsBoard statsBoardTitle`}>
+        <p className="statsBoardPlayer">Compétition</p>
+        <div className="borderStats"></div>
+        <p className="statsBoardMatches">Matchs</p>
+        <div className="borderStats"></div>
+        <p className="statsBoardGoals">Buts</p>
+        <div className="borderStats"></div>
+        <p className="statsBoardAssists">Assists</p>
+        <div className="statsBoardCardsInvisible borderStats"></div>
+        <div className="statsBoardCardsInvisible statsBoardCard">
+          <div className="cardFlex">
+            <div className="yellowCard"></div>
+          </div>
+        </div>
+        <div className="statsBoardCardsInvisible borderStats"></div>
+        <div className="statsBoardCardsInvisible statsBoardCard">
+          <div className="cardFlex">
+            <div className="redCard"></div>
+          </div>
+        </div>
       </div>
       <div>
         {props.season.statsLeague.map((league) => {
@@ -44,17 +94,6 @@ const PlayerSeasonStatsBoard = (props) => {
             </Link>
           );
         })}
-      </div>
-      <div>
-        <PlayerSeasonLeagueStatsBoard
-          name="Total"
-          goals={props.season.totalYear.goals}
-          appearences={props.season.totalYear.appearences}
-          assists={props.season.totalYear.assists}
-          yellows={props.season.totalYear.yellows}
-          reds={props.season.totalYear.reds}
-          assistPresent={props.season.totalYear.assists ? true : false}
-        />
       </div>
     </div>
   );

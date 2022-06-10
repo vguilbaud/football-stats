@@ -1,0 +1,95 @@
+.playerInfo {
+  padding-top: 30px;
+  font-family: Roboto;
+  color: white;
+}
+.playerTitle {
+  padding: 10px 15px 5px 15px;
+  border-radius: 5px;
+  background: linear-gradient(285.93deg, #0088a6 0%, #00c5f0 100%);
+}
+
+.playerTitleTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -20px;
+  font-weight: bold;
+}
+
+.arrowLogo {
+  color: #fdd123;
+  font-size: 40px;
+}
+
+.arrowLogo:hover {
+  cursor: pointer;
+  color: #006a82;
+}
+
+.mainInfos {
+  display: flex;
+  justify-content: space-between;
+  height: 120px;
+}
+
+.basicInfos {
+  max-width: 45%;
+}
+
+.basicInfos h2 {
+  font-style: italic;
+  margin-top: -9px;
+}
+
+.basicInfos h2 span {
+  font-weight: 300;
+}
+
+.photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: solid 4px white;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ageHeight {
+  margin-top: -5px;
+  color: #006a82;
+}
+.ageHeight span {
+  font-weight: 700;
+}
+
+.stats {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 90%;
+  text-align: center;
+}
+.stats p {
+  max-width: 12%;
+}
+
+.stats > * {
+  width: 10%;
+}
+
+@media (min-width: 1000px) {
+  .playerInfo {
+    width: 600px;
+  }
+
+  .photo {
+    width: 140px;
+    height: 140px;
+  }
+}

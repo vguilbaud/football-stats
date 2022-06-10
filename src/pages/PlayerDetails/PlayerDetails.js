@@ -6,6 +6,7 @@ import Authentication from "../../components/UI/Authentication";
 import PlayerInfo from "./PlayerInfo";
 import PlayerSeasonStatsBoard from "./PlayerSeasonStatsBoard";
 import PlayerTeams from "./PlayerTeams";
+import classes from "./PlayerDetails.module.css";
 
 const PlayerDetails = () => {
   const [infoPlayerContent, changeInfoPlayerContent] = useState([]);
@@ -70,7 +71,7 @@ const PlayerDetails = () => {
 
   const changeSeason = (input) => {
     setTimeout(() => {
-      history.push({
+      history.replace({
         pathname: location.pathname,
         search: `?season=${input.target.value}`,
       });
@@ -79,38 +80,40 @@ const PlayerDetails = () => {
   };
 
   return (
-    <div>
+    <div className={classes.playerContent}>
       <Link to={teamId ? `/team/${teamId}?season=${seasonChosen}` : `/home`}>
         Back
       </Link>
       {infoPlayerContent}
-      {possibleSeasons.length > 0 && (
-        <form onChange={changeSeason}>
-          <select
-            className="seasonSelect"
-            defaultValue={
-              URLseason
-                ? URLseason
-                : possibleSeasons
-                    .map((season) => season.substring(0, 4))
-                    .includes("2021")
-                ? "2021"
-                : possibleSeasons[0].substring(0, 4)
-            }
-          >
-            {possibleSeasons.map((season) => {
-              return (
-                <option
-                  key={`player${season.replace(" ", "")}`}
-                  value={season.substring(0, 4)}
-                >
-                  {season}
-                </option>
-              );
-            })}
-          </select>
-        </form>
-      )}
+      <div className={classes.formRelative}>
+        {possibleSeasons.length > 0 && (
+          <form onChange={changeSeason}>
+            <select
+              className={`seasonSelect ${classes.seasonPosition}`}
+              defaultValue={
+                URLseason
+                  ? URLseason
+                  : possibleSeasons
+                      .map((season) => season.substring(0, 4))
+                      .includes("2021")
+                  ? "2021"
+                  : possibleSeasons[0].substring(0, 4)
+              }
+            >
+              {possibleSeasons.map((season) => {
+                return (
+                  <option
+                    key={`player${season.replace(" ", "")}`}
+                    value={season.substring(0, 4)}
+                  >
+                    {`Saison ${season}`}
+                  </option>
+                );
+              })}
+            </select>
+          </form>
+        )}
+      </div>
       {playerSeasonStatsContent}
       {infoTeamsContent}
       <CommentsList type="player" commentedId={playerId} />
