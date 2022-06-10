@@ -1,20 +1,12 @@
 import PlayerSeasonLeagueStatsBoard from "./PlayerSeasonLeagueStatsBoard";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
-import classes from "./PlayerSeasonStatsBoard.module.css";
+import { Link } from "react-router-dom";
+// import classes from "./PlayerSeasonStatsBoard.module.css";
 
 const PlayerSeasonStatsBoard = (props) => {
-  const [isActive, setActive] = useState(false);
-  const formatDate = (year) => `${year} - ${(parseInt(year) + 1).toString()}`;
-
-  const toggleStats = () => {
-    setActive(!isActive);
-  };
-
   return (
     <div>
-      <h3 onClick={toggleStats}>{formatDate(props.season.year)}</h3>
-      <div onClick={toggleStats} className="statsBoard">
+      <h3>{props.season.year}</h3>
+      <div className="statsBoard">
         <h4>League</h4>
         <p>Matches</p>
         <p>Goals</p>
@@ -22,13 +14,16 @@ const PlayerSeasonStatsBoard = (props) => {
         <p>Yellows</p>
         <p>Reds</p>
       </div>
-      <div className={isActive ? null : classes.hidden}>
+      <div>
         {props.season.statsLeague.map((league) => {
           return (
-            <NavLink
+            <Link
+              style={{ textDecoration: "none" }}
               to={
                 league.league.id
-                  ? `/league/${league.league.id}`
+                  ? `/league/${
+                      league.league.id
+                    }?season=${props.season.year.substring(0, 4)}`
                   : `/home/?search=${league.league.name.replace(" ", "%20")}`
               }
               key={`${props.playerId}${props.season.year}${
@@ -46,11 +41,11 @@ const PlayerSeasonStatsBoard = (props) => {
                 reds={league.statistics.reds}
                 assistPresent={props.season.totalYear.assists ? true : false}
               />
-            </NavLink>
+            </Link>
           );
         })}
       </div>
-      <div onClick={toggleStats}>
+      <div>
         <PlayerSeasonLeagueStatsBoard
           name="Total"
           goals={props.season.totalYear.goals}

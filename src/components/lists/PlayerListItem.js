@@ -4,7 +4,7 @@ const PlayerListItem = (props) => {
   return (
     <Link
       style={{ textDecoration: "none" }}
-      to={`/player/${props.player.id}`}
+      to={`/player/${props.player.id}?season=${props.season}`}
       className="statsBoard"
     >
       <p className="statsBoardPlayer">{props.player.name}</p>

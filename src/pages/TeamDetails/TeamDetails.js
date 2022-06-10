@@ -171,24 +171,14 @@ const TeamCard = (props) => {
             }
           >
             {possibleSeasons.map((season) => {
-              if (season === seasonChosen) {
-                return (
-                  <option
-                    key={`team${season.replace(" ", "")}`}
-                    value={season.substring(0, 4)}
-                  >
-                    {season}
-                  </option>
-                );
-              } else
-                return (
-                  <option
-                    key={`team${season.replace(" ", "")}`}
-                    value={season.substring(0, 4)}
-                  >
-                    {season}
-                  </option>
-                );
+              return (
+                <option
+                  key={`team${season.replace(" ", "")}`}
+                  value={season.substring(0, 4)}
+                >
+                  {season}
+                </option>
+              );
             })}
           </select>
         </form>

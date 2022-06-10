@@ -22,6 +22,7 @@ const PlayerList = (props) => {
                     <PlayerListItem
                       key={`player${player.id}`}
                       player={player}
+                      season={props.season}
                     />
                   );
                 } else return "";
