@@ -23,10 +23,14 @@ const CommentsForm = (props) => {
         return res.json();
       })
       .then((res) => {
-        props.editComment(props.commentId, commentRef.current.value);
-        props.closeEditor();
+        if (res.error) {
+          alert(res.error);
+        } else {
+          props.editComment(props.commentId, commentRef.current.value);
+          props.closeEditor();
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alert(err));
   };
 
   const addComment = () => {
@@ -49,9 +53,13 @@ const CommentsForm = (props) => {
         return res.json();
       })
       .then((res) => {
-        authCtx.addComment(res._id);
-        commentRef.current.value = "";
-        props.addNewComment(res);
+        if (res.error) {
+          alert(res.error);
+        } else {
+          authCtx.addComment(res._id);
+          commentRef.current.value = "";
+          props.addNewComment(res);
+        }
       })
       .catch((err) => console.log(err));
   };

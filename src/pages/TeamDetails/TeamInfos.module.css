@@ -1,5 +1,5 @@
 .teamInfo {
-  padding-top: 60px;
+  padding-top: 45px;
   position: relative;
 }
 
@@ -33,7 +33,7 @@
   color: #fdd123;
   font-size: 40px;
   position: absolute;
-  top: 45px;
+  top: 30px;
   left: 10px;
   z-index: 10;
 }

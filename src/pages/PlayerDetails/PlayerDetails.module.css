@@ -1,19 +1,18 @@
+.playerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .formRelative {
   position: relative;
 }
 .seasonPosition {
   position: absolute;
   top: -10px;
-  left: 110px;
+  left: -90px;
 }
 
 @media (min-width: 1000px) {
-  .playerContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   .seasonPosition {
     left: -70px;
   }

@@ -9,11 +9,13 @@ const Header = () => {
 
   return (
     <header id="top" className={classes.header}>
-      <Link to={"/home"}>
-        <img src={Logo} alt="Logo footstats" />
-      </Link>
-      <div onClick={getStats}>
-        <button className="button">Rechercher des stats</button>
+      <div className={classes.headerContent}>
+        <Link to={"/home"}>
+          <img src={Logo} alt="Logo footstats" />
+        </Link>
+        <div onClick={getStats}>
+          <button className="button">Rechercher des stats</button>
+        </div>
       </div>
     </header>
   );

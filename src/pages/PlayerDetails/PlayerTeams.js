@@ -1,4 +1,4 @@
-// import classes from "./PlayerTeams.module.css";
+import classes from "./PlayerTeams.module.css";
 import { Link, useLocation } from "react-router-dom";
 
 const PlayerTeams = (props) => {
@@ -19,9 +19,9 @@ const PlayerTeams = (props) => {
   });
 
   return (
-    <div>
+    <div className={classes.teamContent}>
       <h3>Les clubs où il a joué :</h3>
-      <div className="listLeagueTeam" style={{ marginBottom: "20px" }}>
+      <div className="listLeagueTeam" id="noMarginList">
         {allTeams.map((team, i) => {
           return (
             <Link

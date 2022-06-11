@@ -1,11 +1,20 @@
+.allContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formPosition {
+  position: relative;
+}
 .searchBar {
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 5px 0px 3px 16px;
-  top: 280px;
-  left: 17px;
+  top: -25px;
+  left: 60px;
   width: 325px;
   height: 48px;
   background-color: #f7f7f7;
@@ -41,9 +50,14 @@
   outline: none;
 }
 
+.errorMessage {
+  margin-top: 40px;
+  max-width: 800px;
+}
+
 @media (min-width: 1000px) {
   .searchBar {
-    top: 425px;
-    left: 320px;
+    top: -30px;
+    left: 170px;
   }
 }

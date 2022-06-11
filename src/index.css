@@ -18,9 +18,14 @@ code {
     monospace;
 }
 
+ul {
+  padding-inline-start: 0px;
+}
+
 #root {
-  margin: auto;
-  max-width: 402px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 450px;
 }
 
 .button {
@@ -36,14 +41,21 @@ code {
   padding: 5px;
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
 .listLeagueTeam {
   margin-top: 30px;
-  padding-left: 8px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 15px;
+}
+
+#noMarginList {
+  margin-top: 0px;
 }
 
 .listItem {
@@ -111,7 +123,7 @@ code {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  max-width: 360px;
+  width: 350px;
   font-family: Roboto;
   background-color: #f6f6f6;
   color: #414141;
@@ -139,15 +151,20 @@ code {
   }
 }
 
-.statsBoardTitle div .yellowCard {
-  background-color: #f7cb2a;
+.statsBoard div .card {
   width: 14px;
   height: 24px;
 }
-.statsBoardTitle div .redCard {
+.statsBoard div .cardActive {
+  width: 22px;
+  height: 28px;
+}
+
+.yellowCard {
+  background-color: #f7cb2a;
+}
+.redCard {
   background-color: #fe715e;
-  width: 14px;
-  height: 24px;
 }
 
 .statsBoardPlayer {
@@ -184,29 +201,31 @@ footer {
   font-family: Roboto;
   font-weight: 700;
   border-radius: 5px;
-  padding: 10px;
-  width: 360px;
+  max-width: 100%;
   background-color: #f6f6f6;
   color: #231c1f;
   margin-bottom: 10px;
+  padding: 20px;
 }
 
 @media (min-width: 1000px) {
   #root {
-    max-width: 1000px;
+    width: 1000px;
   }
 
   .listLeagueTeam {
-    padding-left: 60px;
+    max-width: 700px;
   }
 
   footer {
-    width: 1000px;
-    padding-left: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    padding-left: 100px;
   }
 
   .statsBoard {
-    max-width: 650px;
+    width: 650px;
   }
 
   .statsBoardTitle {

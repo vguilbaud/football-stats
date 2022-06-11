@@ -54,7 +54,10 @@ const CommentItem = (props) => {
             <p className={classes.message}>{props.comment.message}</p>
             <div>
               {authCtx.userId === props.comment.userId && (
-                <button className="button" onClick={editingHandler}>
+                <button
+                  className={`button ${classes.margeButton}`}
+                  onClick={editingHandler}
+                >
                   Update
                 </button>
               )}

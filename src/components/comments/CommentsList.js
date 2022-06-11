@@ -61,7 +61,6 @@ const CommentsList = (props) => {
         return response.json();
       })
       .then((res) => {
-        console.log(res);
         setCommentList(
           res
             .filter((comment) => comment.message)
@@ -90,7 +89,13 @@ const CommentsList = (props) => {
           addNewComment={addNewCommentsHandler}
         ></CommentsForm>
       )}
-      <h3>Commentaires</h3>
+      <p>
+        {commentList.length > 0
+          ? "Commentaires :"
+          : `Pas de commentaires sur ${
+              props.type === "player" ? " ce joueur" : "cette équipe"
+            }, ajoutez le votre !`}
+      </p>
       {commentList}
     </div>
   );

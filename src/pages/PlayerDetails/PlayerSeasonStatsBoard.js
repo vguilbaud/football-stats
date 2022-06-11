@@ -4,7 +4,7 @@ import classes from "./PlayerSeasonStatsBoard.module.css";
 
 const PlayerSeasonStatsBoard = (props) => {
   return (
-    <div>
+    <div className={classes.statContent}>
       <div>
         <ul className={classes.playerStats}>
           <li className={classes.statsMatch}>
@@ -54,13 +54,13 @@ const PlayerSeasonStatsBoard = (props) => {
         <div className="statsBoardCardsInvisible borderStats"></div>
         <div className="statsBoardCardsInvisible statsBoardCard">
           <div className="cardFlex">
-            <div className="yellowCard"></div>
+            <div className="card yellowCard"></div>
           </div>
         </div>
         <div className="statsBoardCardsInvisible borderStats"></div>
         <div className="statsBoardCardsInvisible statsBoardCard">
           <div className="cardFlex">
-            <div className="redCard"></div>
+            <div className="card redCard"></div>
           </div>
         </div>
       </div>

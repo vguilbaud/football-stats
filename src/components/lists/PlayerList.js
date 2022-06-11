@@ -1,8 +1,29 @@
 import { useEffect, useState } from "react";
 import PlayerListItem from "./PlayerListItem";
+import classes from "./PlayerList.module.css";
 
 const PlayerList = (props) => {
   const [playerList, addPlayerList] = useState([]);
+  const [activeClass, toggleActiveClass] = useState("goals");
+
+  const handleToggleClasses = (event) => {
+    if (event.target.id && event.target.id !== activeClass) {
+      toggleActiveClass(event.target.id);
+      addPlayerList((prev) => {
+        let newList;
+        if (event.target.id === "name") {
+          newList = prev.sort((a, b) =>
+            a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+          );
+        } else {
+          newList = prev.sort(
+            (a, b) => b[event.target.id] - a[event.target.id]
+          );
+        }
+        return newList;
+      });
+    }
+  };
 
   useEffect(() => {
     let getAlldaPlayers = async () => {
@@ -13,21 +34,8 @@ const PlayerList = (props) => {
           return res.json();
         })
         .then((allPlayers) => {
-          addPlayerList(
-            allPlayers
-              .sort((a, b) => b.goals - a.goals)
-              .map((player) => {
-                if (player) {
-                  return (
-                    <PlayerListItem
-                      key={`player${player.id}`}
-                      player={player}
-                      season={props.season}
-                    />
-                  );
-                } else return "";
-              })
-          );
+          toggleActiveClass("goals");
+          addPlayerList(allPlayers.sort((a, b) => b.goals - a.goals));
         });
     };
     getAlldaPlayers();
@@ -36,28 +44,83 @@ const PlayerList = (props) => {
   return (
     <div>
       <h3 id="stats">Les buteurs cette saison ({playerList.length}):</h3>
-      <div className={`statsBoard statsBoardTitle`}>
-        <p className="statsBoardPlayer">Joueur</p>
+      <div className={`statsBoard statsBoardTitle ${classes.titleHover}`}>
+        <p
+          id="name"
+          onClick={handleToggleClasses}
+          className={`statsBoardPlayer ${
+            activeClass === "name" ? classes.active : ""
+          }`}
+        >
+          Joueur
+        </p>
         <div className="borderStats"></div>
-        <p className="statsBoardMatches">Matchs</p>
+        <p
+          id="games"
+          onClick={handleToggleClasses}
+          className={`statsBoardMatches ${
+            activeClass === "games" ? classes.active : ""
+          }`}
+        >
+          Matchs
+        </p>
         <div className="borderStats"></div>
-        <p className="statsBoardGoals">Buts</p>
+        <p
+          id="goals"
+          onClick={handleToggleClasses}
+          className={`statsBoardGoals ${
+            activeClass === "goals" ? classes.active : ""
+          }`}
+        >
+          Buts
+        </p>
         <div className="borderStats"></div>
-        <p className="statsBoardAssists">Assists</p>
+        <p
+          id="assists"
+          onClick={handleToggleClasses}
+          className={`statsBoardAssists ${
+            activeClass === "assists" ? classes.active : ""
+          }`}
+        >
+          Assists
+        </p>
         <div className="statsBoardCardsInvisible borderStats"></div>
         <div className="statsBoardCardsInvisible statsBoardCard">
           <div className="cardFlex">
-            <div className="yellowCard"></div>
+            <div
+              id="yellows"
+              onClick={handleToggleClasses}
+              className={`yellowCard ${
+                activeClass === "yellows" ? "cardActive" : "card"
+              }`}
+            ></div>
           </div>
         </div>
         <div className="statsBoardCardsInvisible borderStats"></div>
         <div className="statsBoardCardsInvisible statsBoardCard">
           <div className="cardFlex">
-            <div className="redCard"></div>
+            <div
+              id="reds"
+              onClick={handleToggleClasses}
+              className={`redCard ${
+                activeClass === "reds" ? "cardActive" : "card"
+              }`}
+            ></div>
           </div>
         </div>
       </div>
-      {playerList}
+      {playerList.length > 0 &&
+        playerList.map((player) => {
+          if (player) {
+            return (
+              <PlayerListItem
+                key={`player${player.id}`}
+                player={player}
+                season={props.season}
+              />
+            );
+          } else return "";
+        })}
     </div>
   );
 };

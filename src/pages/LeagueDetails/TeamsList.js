@@ -2,7 +2,7 @@ import { useLocation, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import TeamListItem from "./TeamListItem";
 import classes from "./TeamsList.module.css";
-import Cover from "../../images/footstatsCover.png";
+import CoverTitle from "../../components/UI/CoverTitle";
 
 const TeamsList = (props) => {
   const location = useLocation();
@@ -65,7 +65,7 @@ const TeamsList = (props) => {
   return (
     <div className={classes.over}>
       <div>
-        <img className={classes.cover} src={Cover} alt="Cover footstats" />
+        <CoverTitle />
         <div onClick={goBack} className={classes.arrowLogo}>
           ←
         </div>

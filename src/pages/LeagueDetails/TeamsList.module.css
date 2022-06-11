@@ -1,11 +1,14 @@
-.cover {
-  max-width: 100%;
-  margin-top: 54px;
+.over {
+  padding-top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .arrowLogo {
   color: #fdd123;
   font-size: 50px;
+  margin-left: 20px;
 }
 
 .arrowLogo:hover {
@@ -29,15 +32,4 @@
   width: 50px;
   margin-top: 20px;
   border-bottom: solid 1px #d7d7d7;
-}
-
-@media (min-width: 1000px) {
-  .cover {
-    width: 600px;
-  }
-  .over {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 }
