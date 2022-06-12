@@ -171,7 +171,8 @@ ul {
   width: 48%;
   text-decoration: underline solid 2px #f7cb2a;
 }
-.statsBoardPlayer:hover {
+
+.statsBoard:hover .statsBoardPlayer {
   text-decoration: none;
 }
 

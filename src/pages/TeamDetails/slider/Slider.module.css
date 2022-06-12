@@ -1,0 +1,8 @@
+.wholeCarousel {
+  width: 400px;
+}
+@media (min-width: 1000px) {
+  .wholeCarousel {
+    width: 790px;
+  }
+}

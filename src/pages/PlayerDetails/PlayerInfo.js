@@ -28,7 +28,20 @@ const PlayerInfo = (props) => {
         </div>
         <div className={classes.mainInfos}>
           <div className={classes.basicInfos}>
-            <p>{props.infos.nationality}</p>
+            <img
+              className={classes.flag}
+              src={`https://www.countryflagsapi.com/png/${props.infos.nationality.replace(
+                " ",
+                "%20"
+              )}`}
+              alt={`${props.infos.nationality.split(" ")[0]}`}
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src = `https://www.countryflagsapi.com/png/${
+                  props.infos.nationality.split(" ")[0]
+                }`;
+              }}
+            />
             <h2>
               {nameArray.length > 1
                 ? nameArray.map((namePart, i, arr) => {

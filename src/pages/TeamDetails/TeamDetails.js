@@ -4,7 +4,7 @@ import classes from "./TeamDetails.module.css";
 import TeamStats from "./TeamStats";
 import TeamInfos from "./TeamInfos";
 import TeamLeaguePlayed from "./TeamLeaguePlayed";
-import PlayerList from "../../components/lists/PlayerList";
+import PlayerList from "./lists/PlayerList";
 import CommentsList from "../../components/comments/CommentsList";
 import Authentication from "../../components/UI/Authentication";
 

@@ -9,7 +9,7 @@
 .seasonPosition {
   position: absolute;
   top: -10px;
-  left: -90px;
+  left: -80px;
 }
 
 @media (min-width: 1000px) {

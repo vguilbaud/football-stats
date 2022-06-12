@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PlayerListItem from "./PlayerListItem";
 import classes from "./PlayerList.module.css";
+import Slider from "../slider/Slider";
 
 const PlayerList = (props) => {
   const [playerList, addPlayerList] = useState([]);
@@ -42,7 +43,12 @@ const PlayerList = (props) => {
   }, [props.teamId, props.season]);
 
   return (
-    <div>
+    <div className={classes.allContent}>
+      {playerList.length > 0 && (
+        <div>
+          <Slider players={playerList} season={props.season} />
+        </div>
+      )}
       <h3 id="stats">Les buteurs cette saison ({playerList.length}):</h3>
       <div className={`statsBoard statsBoardTitle ${classes.titleHover}`}>
         <p

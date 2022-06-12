@@ -1,0 +1,13 @@
+.allContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.active {
+  color: #f7cb2a;
+}
+
+.titleHover > *:hover {
+  cursor: pointer;
+}
