@@ -54,6 +54,7 @@ const PlayerInfo = (props) => {
             <p className={classes.ageHeight}>
               <span>{props.infos.age} ans</span> | {formatedHeight}
             </p>
+            <p>Total carrière :</p>
           </div>
           <div className={classes.photo}>
             <img src={props.infos.photo} alt={`${props.infos.name} logo`} />

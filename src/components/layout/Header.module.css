@@ -29,9 +29,8 @@
   }
 
   .header button {
-    background-color: #fcd122;
-    border-radius: 0px;
-    height: 41px;
     margin-right: 180px;
+    font-size: 13px;
+    padding: 7px;
   }
 }

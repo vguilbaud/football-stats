@@ -26,6 +26,7 @@ ul {
   margin-left: auto;
   margin-right: auto;
   width: 450px;
+  margin-bottom: 30px;
 }
 
 .button {
@@ -59,6 +60,7 @@ ul {
 }
 
 .listItem {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,17 +73,15 @@ ul {
 }
 
 .listItem:hover {
-  box-shadow: 2px 2px 3px grey;
+  border: solid 1px #f7cb2a;
+  padding: 9px 9px 4px 9px;
+  box-shadow: 1px 1px 5px lightgrey;
 }
 
 .listItem p {
   color: #414141;
   text-align: center;
   font-size: 12px;
-}
-.listItem:hover .listArrow {
-  border: 1px solid grey;
-  color: grey;
 }
 
 .listItem img {
@@ -197,18 +197,6 @@ ul {
   background-color: #dddddd;
 }
 
-footer {
-  margin-top: 20px;
-  font-family: Roboto;
-  font-weight: 700;
-  border-radius: 5px;
-  max-width: 100%;
-  background-color: #f6f6f6;
-  color: #231c1f;
-  margin-bottom: 10px;
-  padding: 20px;
-}
-
 @media (min-width: 1000px) {
   #root {
     width: 1000px;
@@ -216,13 +204,6 @@ footer {
 
   .listLeagueTeam {
     max-width: 700px;
-  }
-
-  footer {
-    margin-left: auto;
-    margin-right: auto;
-    width: 600px;
-    padding-left: 100px;
   }
 
   .statsBoard {

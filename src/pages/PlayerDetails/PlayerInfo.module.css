@@ -31,7 +31,7 @@
 .mainInfos {
   display: flex;
   justify-content: space-between;
-  height: 120px;
+  height: 150px;
 }
 
 .basicInfos {
