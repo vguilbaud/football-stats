@@ -29,6 +29,16 @@ export const leagues = [
     id: 140,
     logo: "https://media.api-sports.io/football/leagues/140.png",
   },
+  {
+    name: "Primeira Liga",
+    id: 94,
+    logo: "https://media.api-sports.io/football/leagues/94.png",
+  },
+  {
+    name: "UEFA Nations League",
+    id: 5,
+    logo: "https://media.api-sports.io/football/leagues/5.png",
+  },
 ];
 
 export const seasons = [

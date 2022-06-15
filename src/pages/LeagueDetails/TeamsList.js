@@ -4,7 +4,7 @@ import TeamListItem from "./TeamListItem";
 import classes from "./TeamsList.module.css";
 import CoverTitle from "../../components/UI/CoverTitle";
 
-const TeamsList = (props) => {
+const TeamsList = () => {
   const location = useLocation();
   const history = useHistory();
   let params = new URLSearchParams(location.search);

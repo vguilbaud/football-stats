@@ -53,7 +53,7 @@ const LeaguesList = () => {
   };
 
   return (
-    <div className="allContent">
+    <div>
       <div className={classes.formPosition}>
         <form onChange={searchLeague} className={classes.searchBar}>
           <label htmlFor="search">
