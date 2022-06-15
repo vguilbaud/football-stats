@@ -7,12 +7,14 @@ import PlayerInfo from "./PlayerInfo";
 import PlayerSeasonStatsBoard from "./PlayerSeasonStatsBoard";
 import PlayerTeams from "./PlayerTeams";
 import classes from "./PlayerDetails.module.css";
+import Loader from "../../components/UI/Loader";
 
 const PlayerDetails = () => {
   const [infoPlayerContent, changeInfoPlayerContent] = useState([]);
   const [playerStats, changePlayerStats] = useState([]);
   const [infoTeamsContent, changeInfoTeamsContent] = useState([]);
   const [playerSeasonStatsContent, changePlayerSeasonStatsContent] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
   const [teamId, setTeamId] = useState();
   const location = useLocation();
@@ -25,18 +27,23 @@ const PlayerDetails = () => {
     .replace(seasonChosen, "");
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(`http://localhost:4200/api/players/${playerId}`).then((res) =>
       res.json().then((res) => {
-        changePossibleSeason(
-          res.stats
-            .map((season) => season.year)
-            .reverse()
-            .filter((year) => !year.includes("2023"))
-        );
-        changeInfoPlayerContent(
-          <PlayerInfo infos={res.playerInfos} total={res.total} />
-        );
-        changePlayerStats(res.stats);
+        if (res.message) {
+          alert(res.message);
+        } else {
+          changePossibleSeason(
+            res.stats
+              .map((season) => season.year)
+              .reverse()
+              .filter((year) => !year.includes("2023"))
+          );
+          changeInfoPlayerContent(
+            <PlayerInfo infos={res.playerInfos} total={res.total} />
+          );
+          changePlayerStats(res.stats);
+        }
       })
     );
   }, [playerId]);
@@ -60,6 +67,7 @@ const PlayerDetails = () => {
         return res.json();
       })
       .then((res) => {
+        setIsLoading(false);
         if (res.transfers) {
           setTeamId(res.transfers[0].teams.in.id);
           changeInfoTeamsContent(<PlayerTeams teams={res.transfers} />);
@@ -114,6 +122,7 @@ const PlayerDetails = () => {
           </form>
         )}
       </div>
+      {isLoading && <Loader />}
       {playerSeasonStatsContent}
       {infoTeamsContent}
       <CommentsList type="player" commentedId={playerId} />

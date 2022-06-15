@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PlayerListItem from "./PlayerListItem";
+import PlayerStatsLine from "../../../components/UI/PlayerStatsLine";
 import classes from "./PlayerList.module.css";
 import Slider from "../slider/Slider";
 
@@ -119,10 +119,15 @@ const PlayerList = (props) => {
         playerList.map((player) => {
           if (player) {
             return (
-              <PlayerListItem
+              <PlayerStatsLine
+                link={`/player/${player.id}?season=${props.season}`}
                 key={`player${player.id}`}
-                player={player}
-                season={props.season}
+                name={player.name}
+                goals={player.goals}
+                games={player.games}
+                assists={player.assists}
+                yellows={player.yellows}
+                reds={player.reds}
               />
             );
           } else return "";

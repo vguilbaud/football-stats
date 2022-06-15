@@ -34,10 +34,10 @@ const Authentication = (props) => {
       {!authCtx.isLoggedIn && (
         <div className={classes.buttonFlex}>
           <button className="button" onClick={openSigningModal}>
-            Sign Up
+            S'enregister
           </button>
           <button className="button" onClick={openLoggingModal}>
-            Login
+            Connexion
           </button>
           {connectionModalOpened && (
             <ConnectionModal
@@ -46,7 +46,7 @@ const Authentication = (props) => {
               signing={isSigning}
             />
           )}
-          <p>Sign in to be able to write comments</p>
+          <p>Connectez vous pour ajouter des commentaires</p>
         </div>
       )}
       {authCtx.isLoggedIn && (

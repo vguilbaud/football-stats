@@ -1,9 +1,9 @@
 import { Route, Switch, Redirect } from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import TeamDetails from "./pages/TeamDetails/TeamDetails";
 import PlayerDetails from "./pages/PlayerDetails/PlayerDetails";
-import TeamsList from "./pages/LeagueDetails/TeamsList";
+import LeagueTeamsList from "./pages/LeagueDetails/LeagueTeamsList";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Home />
         </Route>
         <Route path="/league/:leagueId">
-          <TeamsList />
+          <LeagueTeamsList />
         </Route>
         <Route path="/team/:teamId">
           <TeamDetails />

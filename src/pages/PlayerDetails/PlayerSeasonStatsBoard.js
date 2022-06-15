@@ -1,5 +1,4 @@
-import PlayerSeasonLeagueStatsBoard from "./PlayerSeasonLeagueStatsBoard";
-import { Link } from "react-router-dom";
+import PlayerStatsLine from "../../components/UI/PlayerStatsLine";
 import classes from "./PlayerSeasonStatsBoard.module.css";
 
 const PlayerSeasonStatsBoard = (props) => {
@@ -67,9 +66,8 @@ const PlayerSeasonStatsBoard = (props) => {
       <div>
         {props.season.statsLeague.map((league) => {
           return (
-            <Link
-              style={{ textDecoration: "none" }}
-              to={
+            <PlayerStatsLine
+              link={
                 league.league.id
                   ? `/league/${
                       league.league.id
@@ -81,17 +79,13 @@ const PlayerSeasonStatsBoard = (props) => {
                   ? league.league.id
                   : league.league.name.replace(" ", "")
               }`}
-            >
-              <PlayerSeasonLeagueStatsBoard
-                name={league.league.name}
-                goals={league.statistics.goals}
-                appearences={league.statistics.appearences}
-                assists={league.statistics.assists}
-                yellows={league.statistics.yellows}
-                reds={league.statistics.reds}
-                assistPresent={props.season.totalYear.assists ? true : false}
-              />
-            </Link>
+              name={league.league.name}
+              goals={league.statistics.goals}
+              games={league.statistics.appearences}
+              assists={league.statistics.assists}
+              yellows={league.statistics.yellows}
+              reds={league.statistics.reds}
+            />
           );
         })}
       </div>

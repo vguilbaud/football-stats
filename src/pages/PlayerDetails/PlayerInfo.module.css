@@ -31,11 +31,16 @@
 .mainInfos {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: 150px;
 }
 
 .basicInfos {
-  max-width: 45%;
+  max-width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .basicInfos h2 {
@@ -76,12 +81,12 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  max-width: 90%;
+  max-width: 95%;
   text-align: center;
 }
 
 .stats > * {
-  width: 10%;
+  width: 9%;
 }
 
 @media (min-width: 1000px) {

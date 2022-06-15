@@ -7,6 +7,7 @@ import TeamLeaguePlayed from "./TeamLeaguePlayed";
 import PlayerList from "./lists/PlayerList";
 import CommentsList from "../../components/comments/CommentsList";
 import Authentication from "../../components/UI/Authentication";
+import Loader from "../../components/UI/Loader";
 
 const TeamCard = (props) => {
   const location = useLocation();
@@ -29,16 +30,22 @@ const TeamCard = (props) => {
   const [teamStatsContent, changeTeamStatsContent] = useState([]);
   const [teamInfosContent, changeTeamInfoContent] = useState([]);
   const [teamPlayerList, changeTeamPlayerList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:4200/api/teams/possibleSeasons/${teamId}`)
       .then((res) => res.json())
       .then((res) => {
-        changePossibleSeason(res);
+        if (res.message) {
+          alert(res.message);
+        } else {
+          changePossibleSeason(res);
+        }
       });
   }, [teamId]);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(`http://localhost:4200/api/teams/${teamId}`)
       .then((res) => {
         return res.json();
@@ -139,6 +146,7 @@ const TeamCard = (props) => {
           changeTeamStatsContent(
             <TeamStats id={teamId} totalStats={totalGoals.current.value} />
           );
+          setIsLoading(false);
         });
     }
   }, [teamId, seasonChosen, possibleSeasons, URLseason]);
@@ -183,6 +191,7 @@ const TeamCard = (props) => {
           </select>
         </form>
       )}
+      {isLoading && <Loader />}
       {teamStatsContent}
       {teamPlayerList}
       {teamLeaguePlayedContent}

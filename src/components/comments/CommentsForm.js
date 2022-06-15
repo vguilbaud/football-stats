@@ -70,7 +70,7 @@ const CommentsForm = (props) => {
         type="text"
         ref={commentRef}
         defaultValue={props.initialValue ? props.initialValue : ""}
-        placeholder="100 characters max"
+        placeholder="100 caractères maximum"
       />
       <button
         className="button"

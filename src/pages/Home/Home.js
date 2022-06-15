@@ -1,6 +1,6 @@
-import LeaguesList from "./LeagueDetails/LeaguesList";
+import LeaguesList from "./LeaguesList";
 import classes from "./Home.module.css";
-import CoverTitle from "../components/UI/CoverTitle";
+import CoverTitle from "../../components/UI/CoverTitle";
 
 const Home = () => {
   return (

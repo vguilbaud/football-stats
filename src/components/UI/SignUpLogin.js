@@ -127,19 +127,21 @@ const SignUpLogin = (props) => {
   return (
     <div className={classes.modal}>
       <button className="button" onClick={props.removeModal}>
-        Back
+        retour
       </button>
       <button className="button" onClick={handleSwitching}>
-        {props.signing ? "Login" : "Sign Up"}
+        {props.signing ? "Connexion" : "Inscription"}
       </button>
-      <h3>{props.signing ? "Sign Up" : "Login"}</h3>
+      <h3>{props.signing ? "Inscription" : "Connexion"}</h3>
       <p>
-        {props.signing ? "Create your account" : "Login"} to be able to write
-        comments
+        {props.signing ? "Créez votre compte" : "Connectez vous"} pour pouvoir
+        écrire des commentaires
       </p>
       <form onSubmit={handleForm}>
         <div className={classes.control}>
-          <label htmlFor="email">{props.signing && "Insert your "}Email</label>
+          <label htmlFor="email">
+            {props.signing && "Insérez votre  "}email
+          </label>
           <input type="email" id="email" ref={emailRef} required />
           {errorMessage.type === "email" ? (
             <p className={classes.error}>{errorMessage.message}</p>
@@ -149,7 +151,7 @@ const SignUpLogin = (props) => {
         </div>
         <div className={classes.control}>
           <label htmlFor="password">
-            {props.signing && "Create your "}Password
+            {props.signing && "Créez votre "}mot de passe
           </label>
           <input type="password" id="password" ref={passwordRef} required />
           {errorMessage.type === "password" ? (

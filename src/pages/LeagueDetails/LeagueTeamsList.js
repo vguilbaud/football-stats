@@ -1,8 +1,9 @@
 import { useLocation, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
-import TeamListItem from "./TeamListItem";
-import classes from "./TeamsList.module.css";
+import LeagueTeamListItem from "./LeagueTeamListItem";
+import classes from "./LeagueTeamsList.module.css";
 import CoverTitle from "../../components/UI/CoverTitle";
+import Loader from "../../components/UI/Loader";
 
 const TeamsList = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ const TeamsList = () => {
   const [possibleSeasons, changePossibleSeason] = useState([]);
   const [allTeams, changeTeamsDisplayed] = useState([]);
   const [leagueInfo, changeLeagueInfo] = useState({ name: "", logo: "" });
+  const [isLoading, setIsLoading] = useState(false);
 
   const leagueId = location.pathname
     .replace(/[^0-9]/g, "")
@@ -23,16 +25,21 @@ const TeamsList = () => {
     fetch(`http://localhost:4200/api/leagues/getSeasonsPlayed/${leagueId}`)
       .then((res) => res.json())
       .then((response) => {
-        changePossibleSeason(response.seasons);
-        changeLeagueInfo({
-          name: response.league.name,
-          logo: response.league.logo,
-        });
+        if (response.message) {
+          alert(response.message);
+        } else {
+          changePossibleSeason(response.seasons);
+          changeLeagueInfo({
+            name: response.league.name,
+            logo: response.league.logo,
+          });
+        }
       });
   }, [leagueId]);
 
   useEffect(() => {
     if (possibleSeasons.length > 0) {
+      setIsLoading(true);
       setTimeout(() => {
         fetch(
           `http://localhost:4200/api/leagues/${leagueId}?season=${
@@ -43,8 +50,10 @@ const TeamsList = () => {
             return res.json();
           })
           .then((res) => {
+            setIsLoading(false);
             changeTeamsDisplayed(res);
-          });
+          })
+          .catch((err) => alert(err));
       }, 500);
     }
   }, [leagueId, URLseason, seasonChosen, possibleSeasons]);
@@ -98,17 +107,20 @@ const TeamsList = () => {
         )}
         <div className={classes.line}></div>
       </div>
-      <div className="listLeagueTeam">
-        {allTeams.map((team) => {
-          return (
-            <TeamListItem
-              team={team}
-              key={`team${team.id}`}
-              season={URLseason ? URLseason : "2021"}
-            />
-          );
-        })}
-      </div>
+      {isLoading && <Loader />}
+      {!isLoading && (
+        <div className="listLeagueTeam">
+          {allTeams.map((team) => {
+            return (
+              <LeagueTeamListItem
+                team={team}
+                key={`team${team.id}`}
+                season={URLseason ? URLseason : "2021"}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };
