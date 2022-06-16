@@ -17,14 +17,7 @@ const SliderItem = (props) => {
             " ",
             "%20"
           )}`}
-          alt={`${props.player.nationality.split(" ")[0]}`}
-          onError={({ currentTarget }) => {
-            currentTarget.onerror = null;
-            currentTarget.src = `https://www.countryflagsapi.com/png/${
-              props.player.nationality.split(" ")[0]
-            }
-            )}`;
-          }}
+          alt={`${props.player.nationality}`}
         />
         <div className={classes.imgContent}>
           <img src={props.player.photo} alt={`${props.player.name}`} />

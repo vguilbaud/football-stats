@@ -49,13 +49,13 @@
 }
 
 .statsYellows {
-  background-color: #fe715e;
+  background-color: #ffc42b;
   width: 165px;
   height: 80px;
 }
 
 .statsReds {
-  background-color: #ffc42b;
+  background-color: #fe715e;
   width: 165px;
   height: 80px;
 }

@@ -49,7 +49,7 @@ const PlayerList = (props) => {
           <Slider players={playerList} season={props.season} />
         </div>
       )}
-      <h3 id="stats">Les buteurs cette saison ({playerList.length}):</h3>
+      <h3 id="stats">Les joueurs cette saison ({playerList.length}):</h3>
       <div className={`statsBoard statsBoardTitle ${classes.titleHover}`}>
         <p
           id="name"

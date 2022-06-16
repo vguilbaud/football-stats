@@ -34,13 +34,7 @@ const PlayerInfo = (props) => {
                 " ",
                 "%20"
               )}`}
-              alt={`${props.infos.nationality.split(" ")[0]}`}
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null;
-                currentTarget.src = `https://www.countryflagsapi.com/png/${
-                  props.infos.nationality.split(" ")[0]
-                }`;
-              }}
+              alt={`${props.infos.nationality}`}
             />
             <h2>
               {nameArray.length > 1
